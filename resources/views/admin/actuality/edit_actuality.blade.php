@@ -208,13 +208,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="javascript:void(0);" >
+                                <a href="{{route('admin.user.create')}}" >
                                     <span>Ajouter</span>
                                 </a>
                                
                             </li>
                             <li>
-                                <a href="javascript:void(0);" >
+                                <a href="{{route('admin.user.index')}}" >
                                     <span>Gestion des membres</span>
                                 </a>
                                 
@@ -228,16 +228,15 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="#">Ajouter</a>
+                                <a href="{{route('admin.user.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="#">Gestion des utilisateurs</a>
+                                <a href="{{route('admin.user.index')}}">Gestion des utilisateurs</a>
                             </li>
                    
                         
                           
                         </ul>
-                    </li>
                     </li>
                              <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -267,7 +266,7 @@
                                 <a href="{{route('admin.job.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.job.create')}}">Liste des Professions</a>
+                                <a href="{{route('admin.job.index')}}">Liste des Professions</a>
                             </li>
                    
                         
@@ -285,7 +284,7 @@
                                 <a href="{{route('admin.project.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.project.create')}}">Liste de projets marie</a>
+                                <a href="{{route('admin.project.index')}}">Liste de projets marie</a>
                             </li>
                    
                         
@@ -352,13 +351,13 @@
                         <ul class="ml-menu">
                             <li>
                                 <a href="{{route('admin.event.create')}}">Ajouter un evenement</a>
-                            </li>
+                            </li> 
                             <li>
                                 <a href="{{route('admin.event.index')}}">Liste des evenements</a>
                             </li>
                             
                         </ul>
-                    </li>
+                    </li> 
 
                      <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -385,7 +384,7 @@
                     
             
                             <li>
-                                <a href="{{route('admin.message.create')}}">Toutes les message</a>
+                                <a href="{{route('admin.message.index')}}">Toutes les message</a>
                             </li>
                         </ul>
                     </li>
@@ -430,11 +429,10 @@
                             </li>
                       
                             <li>
-                                <a href="{{route('admin.ded.create')}}">Liste des décès</a>
+                                <a href="{{route('admin.ded.index')}}">Liste des décès</a>
                             </li>
                         </ul>
                     </li>
-                  
                   
                     
                     

@@ -458,12 +458,12 @@
 										<h4 class="widget-title">Mon village</h4>	
 										<div class="your-page">
 											<figure>
-												<img  style="border:2px solid #ff00" src="images/resources/friend-avatar9.jpg" alt="">
+												<img  style="border:2px solid #ff00" src="images/{{auth()->user()->picture}}" alt="">
 											</figure>
 											<div class="page-meta">
 												<a href="#" title="" class="underline">La chefferie</a>
-												<span><i class="ti-comment"></i><a href="insight.html" title="">Messages <em>9</em></a></span>
-												<span><i class="ti-bell"></i><a href="insight.html" title="">Notifications <em>2</em></a></span>
+												<span><i class="ti-comment"></i><a href="insight.html" title="">Messages <em></em></a></span>
+												<span><i class="ti-bell"></i><a href="insight.html" title="">Notifications <em>{{auth()->user()->unreadNotifications->count()}}</em></a></span>
 											</div>
 											<!-- <div class="page-likes">
 												<ul class="nav nav-tabs likes-btn">

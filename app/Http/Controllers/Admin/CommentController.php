@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Actulity;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 
@@ -69,5 +70,16 @@ class CommentController extends Controller
         Comment::find($id)->delete();
 
        return redirect()->route('admin.comment.index');
+    }
+
+
+    //compteur de vote
+    public function comment(Request $request)
+    {
+      
+      $data = $request->except('_token');
+       
+        $comment =Comment::create($data);
+        return response()->json(['response'=>$data]);
     }
 }

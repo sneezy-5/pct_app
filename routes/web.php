@@ -12,6 +12,7 @@ use App\Http\Controllers\Home\ProjectController;
 use App\Http\Controllers\Home\SubjectController;
 use App\Http\Controllers\Home\PharmacyController;
 use App\Http\Controllers\Home\ActualityController;
+use App\Http\Controllers\Home\CommentController;
 use App\Http\Controllers\Home\EmergencyController;
 use App\Http\Controllers\Home\MessageController;
 
@@ -51,9 +52,12 @@ Route::group(['middleware' => ['auth','banned']], function () {
     //ajax request 
     Route::post('/ajax/{id}/actuaity', [ActualityController::class, 'commant_ajax'])->name('posts.comment');
 
-
+    Route::post('/ajax/voted', [SubjectController::class, 'voted'])->name('subject.voted');
+    Route::post('/ajax/comment', [CommentController::class, 'comment'])->name('comment.comment');
     //ajax request 
     Route::post('/ajax/message', [MessageController::class, 'create_or_return_private_chat'])->name('massage.chat');
+
+    Route::post('/comment_store/{actuality}', [CommentController::class, 'store_comment'])->name('comment.store_comment');
 });
 
 

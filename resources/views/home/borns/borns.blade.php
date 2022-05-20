@@ -58,13 +58,13 @@
 						
 					</ul>
 				</li> -->
-				<li>
-					<a href="#" title="">Actualité</a>
+				<li><span>Actualité</span>
 					<ul>
-						<li><a href="/" title="">Information du village</a></li>
-						<li><a href="{{route('born.index')}}" title="">Naissance</a></li>
-						<li><a href="{{route('ded.index')}}" title="">Décès</a></li>
-						<li><a href="{{route('mary.index')}}" title="">Décès</a></li>
+						<li><a href="#" title="">Information du village</a></li>
+						<li><a href="#" title="">Naissance</a></li>
+            <li><a href="#" title="">Mariage</a></li>
+						<li><a href="#" title="">Décès</a></li>
+					
 					</ul>
 				</li>
 				<li><span>forum</span>
@@ -154,7 +154,7 @@
 				<li>
 					<a href="#" title="">Actualité</a>
 					<ul>
-						<li><a href="#" title="">Information du village</a></li>
+						<li><a href="/" title="">Information du village</a></li>
 						<li><a href="{{route('born.index')}}" title="">Naissance</a></li>
 						<li><a href="{{route('ded.index')}}" title="">Décès</a></li>
 						<li><a href="{{route('mary.index')}}" title="">Mariage</a></li>
@@ -282,7 +282,7 @@
 				</li>
 			</ul>
 			<div class="user-img">
-				<img src="images/{{auth()->user()->picture}}" alt="">
+				<img src="images/" alt="">
 				<span class="status f-online"></span>
 				<div class="user-setting">
 					
@@ -407,20 +407,20 @@
 							<div class="col-lg-6">
 								<div class="central-meta">
 									<div class="groups">
-										<span><i class="fa fa-users"></i> Naissances</span>
+										<span><i class="fa fa-users"></i> Naissance</span>
 									</div>
 									<ul class="nearby-contct">
                     @foreach($borns as $born)
 										<li>
 											<div class="nearly-pepls">
 												<figure>
-													<a href="time-line.html" title=""><img src="{{$born->image}}" alt=""></a>
+													<a href="time-line.html" title=""><img src="{{$ded->image}}" alt=""></a>
 												</figure>
 												<div class="pepl-info">
 													<h4><a href="time-line.html" title="">{{$born->mother_name}}</a></h4>
 													<span>{{$born->child_name}}</span>
-													<em>{{$born->born_date}}</em>
-													<a href="#" title="" class="add-butn" data-ripple="">Voir<span class="ripple"><span class="ink" style="height: 74px; width: 74px; background-color: rgb(255, 232, 8); top: -28.2px; left: -14.15px;"></span></span></a>
+													<em><img src="{{asset('$ded->image')}}" alt=""></em>
+													<!-- <a href="#" title="" class="add-butn" data-ripple="">Voir<span class="ripple"><span class="ink" style="height: 74px; width: 74px; background-color: rgb(255, 232, 8); top: -28.2px; left: -14.15px;"></span></span></a> -->
 												</div>
 											</div>
 										</li>
@@ -435,12 +435,12 @@
 										<h4 class="widget-title">Mon village</h4>	
 										<div class="your-page">
 											<figure>
-												<img  style="border:2px solid #ff00" src="images/resources/friend-avatar9.jpg" alt="">
+												<img  style="border:2px solid #ff00" src="images/{{auth()->user()->picture}}" alt="">
 											</figure>
 											<div class="page-meta">
 												<a href="#" title="" class="underline">La chefferie</a>
-												<span><i class="ti-comment"></i><a href="#" title="">Messages <em>9</em></a></span>
-												<span><i class="ti-bell"></i><a href="#" title="">Notifications <em>2</em></a></span>
+												<span><i class="ti-comment"></i><a href="#" title="">Messages <em></em></a></span>
+												<span><i class="ti-bell"></i><a href="#" title="">Notifications <em>{{auth()->user()->unreadNotifications->count()}}</em></a></span>
 											</div>
 											<!-- <div class="page-likes">
 												<ul class="nav nav-tabs likes-btn">
@@ -754,9 +754,6 @@
 			</form>
 		</div><!-- side panel -->	
 		
-		
-
-
 		<script>
 
 function createOrReturnPrivateChat(id){
@@ -806,7 +803,6 @@ function createOrReturnPrivateChat(id){
 				win.focus()
 			}
 		</script>
-		
 	
 	<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.min.js"></script>
 	<script src="{{asset('js/script.js')}}"></script>

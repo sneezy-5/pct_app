@@ -950,7 +950,7 @@
                         </div>
                     </div>
                 </div>
-            </div> <!-- <td> <a class="btn btn-primary" href="{{route('admin.job.show',['job'=>$job->id])}}">Afficher</a></td>
+            </div> 
             <!-- #END# Basic Examples -->
             <!-- Exportable Table -->
             

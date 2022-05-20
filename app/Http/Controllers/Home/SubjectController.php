@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Vote;
 use App\Notifications\SendNotification;
 
 
@@ -18,7 +19,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $subjects = User::find(auth()->user()->id)->subject;
+       // $subjects = User::find(auth()->user()->id)->subject;
+       $subjects=  Subject::all();
         $users  =  User::where('id','!=',auth()->user()->id)->get();
 
 
@@ -114,6 +116,7 @@ class SubjectController extends Controller
 
 
         $data['user_id'] = auth()->user()->id;
+        //$data['user_id'] = auth()->user()->id;
 
         Subject::find($id)->update($data);
         return redirect()->route('admin.subject.index');
@@ -130,5 +133,22 @@ class SubjectController extends Controller
         Subject::find($id)->delete();
 
         return redirect()->route('subject.index');
+    }
+
+
+    //compteur de vote
+    public function voted(Request $request)
+    {
+      
+        if(!Vote::where('user_id',auth()->user()->id)->exists()){
+            $response =Subject::find($request['subject_id']);
+            Vote::create(['subject_id'=>$request['subject_id'],'user_id'=>auth()->user()->id]);
+            $response->voted+=1;
+            $response->save();
+          
+        }
+       
+        $subject =Subject::find($request['subject_id'])->voted;
+        return response()->json(['response'=>$subject]);
     }
 }

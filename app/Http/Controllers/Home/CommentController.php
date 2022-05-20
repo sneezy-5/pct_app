@@ -70,4 +70,27 @@ class CommentController extends Controller
 
        return redirect()->route('admin.comment.index');
     }
+
+
+    
+    public function store_comment(Request $request,$id)
+    {
+      
+      $data = $request->except('_token');
+       $data['actuality_id']=$id;
+       $data['user_name']=auth()->user()->name;
+       $data['user_id']=auth()->user()->id;
+        $comment =Comment::create($data);
+        return redirect('/');
+    }
+
+
+    public function comment(Request $request)
+    {
+      
+      $data = $request->except('_token');
+       
+        $subject =Comment::create($data);
+        return response()->json(['response'=>$subject]);
+    }
 }

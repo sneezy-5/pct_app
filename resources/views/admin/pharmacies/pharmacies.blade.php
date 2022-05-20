@@ -247,13 +247,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="javascript:void(0);" >
+                                <a href="{{route('admin.user.create')}}" >
                                     <span>Ajouter</span>
                                 </a>
                                
                             </li>
                             <li>
-                                <a href="javascript:void(0);" >
+                                <a href="{{route('admin.user.index')}}" >
                                     <span>Gestion des membres</span>
                                 </a>
                                 
@@ -267,30 +267,71 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/ui/alerts.html">Ajouter</a>
+                                <a href="{{route('admin.user.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="pages/ui/animations.html">Gestion des utilisateurs</a>
+                                <a href="{{route('admin.user.index')}}">Gestion des utilisateurs</a>
                             </li>
-                            <li>
-                                <a href="pages/ui/badges.html">Badges</a>
-                            </li>
-
-                          
-                            <li>
-                                <a href="pages/ui/media-object.html">Objectif</a>
-                            </li>
-                          
-                            <li>
-                                <a href="pages/ui/notifications.html">Notifications</a>
-                            </li>
-                            <li>
-                                <a href="pages/ui/pagination.html">Messages</a>
-                            </li>
+                   
                         
                           
                         </ul>
                     </li>
+                             <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">swap_calls</i>
+                            <span>Mariage</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{{route('admin.mary.create')}}">Mariage</a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.mary.index')}}">Liste des mariages</a>
+                            </li>
+                   
+                        
+                          
+                        </ul>
+                    </li>
+
+                        <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">swap_calls</i>
+                            <span>Professions</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{{route('admin.job.create')}}">Ajouter</a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.job.index')}}">Liste des Professions</a>
+                            </li>
+                   
+                        
+                          
+                        </ul>
+                    </li>
+
+                        <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">swap_calls</i>
+                            <span>Projet Mairie</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{{route('admin.project.create')}}">Ajouter</a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.project.index')}}">Liste de projets marie</a>
+                            </li>
+                   
+                        
+                          
+                        </ul>
+                    </li>
+
+
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">account_balance</i>
@@ -298,23 +339,12 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/forms/basic-form-elements.html">Basic Form Elements</a>
+                                <a href="{{route('admin.emergency.create')}}">Ajouter un hopital</a>
                             </li>
                             <li>
-                                <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
+                                <a href="{{route('admin.emergency.index')}}">Liste des hopitaux</a>
                             </li>
-                            <li>
-                                <a href="pages/forms/form-examples.html">Form Examples</a>
-                            </li>
-                            <li>
-                                <a href="pages/forms/form-validation.html">Form Validation</a>
-                            </li>
-                            <li>
-                                <a href="pages/forms/form-wizard.html">Form Wizard</a>
-                            </li>
-                            <li>
-                                <a href="pages/forms/editors.html">Editors</a>
-                            </li>
+                          
                         </ul>
                     </li>
                     <li>
@@ -324,13 +354,91 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/tables/normal-tables.html">Pharmacie de garde</a>
+                                <a href="{{route('admin.pharmacy.create')}}">Ajouter une pharmacie</a>
                             </li>
                             <li>
-                                <a href="pages/tables/jquery-datatable.html">Liste des pharmacies</a>
+                                <a href="{{route('admin.pharmacy.degarde')}}">Pharmacie de garde</a>
                             </li>
                             <li>
-                                <a href="pages/tables/editable-table.html">Editable Tables</a>
+                                <a href="{{route('admin.pharmacy.index')}}">Liste des pharmacies</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+
+                     <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">view_list</i>
+                            <span>Ecoles</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{{route('admin.school.create')}}">Ajouter une ecole</a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.school.index')}}">Liste des ecoles</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+
+                     <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">view_list</i>
+                            <span>Evenement</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{{route('admin.event.create')}}">Ajouter un evenement</a>
+                            </li> 
+                            <li>
+                                <a href="{{route('admin.event.index')}}">Liste des evenements</a>
+                            </li>
+                            
+                        </ul>
+                    </li> 
+
+                     <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">view_list</i>
+                            <span>Naissance</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{{route('admin.born.create')}}">Ajouter une naissance</a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.born.index')}}">Liste des naissances</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+
+                      <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">import_contacts</i>
+                            <span>Message</span>
+                        </a>
+                        <ul class="ml-menu">
+                    
+            
+                            <li>
+                                <a href="{{route('admin.message.index')}}">Toutes les message</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                      <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">import_contacts</i>
+                            <span>Subjection</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{{route('admin.subject.create')}}">Ajouter</a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.subject.index')}}">Liste de subjections</a>
                             </li>
                         </ul>
                     </li>
@@ -341,136 +449,35 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/medias/image-gallery.html">Image Gallery</a>
+                                <a href="{{route('admin.actuality.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="pages/medias/carousel.html">Carousel</a>
+                                <a href="{{route('admin.actuality.index')}}">Toutes les actualités</a>
                             </li>
                         </ul>
                     </li>
+                    
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">pie_chart</i>
-                            <span>Charts</span>
+                            <i class="material-icons">import_contacts</i>
+                            <span>Décès</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/charts/morris.html">Morris</a>
+                                <a href="{{route('admin.ded.create')}}">Ajouter</a>
                             </li>
+                      
                             <li>
-                                <a href="pages/charts/flot.html">Flot</a>
-                            </li>
-                            <li>
-                                <a href="pages/charts/chartjs.html">ChartJS</a>
-                            </li>
-                            <li>
-                                <a href="pages/charts/sparkline.html">Sparkline</a>
-                            </li>
-                            <li>
-                                <a href="pages/charts/jquery-knob.html">Jquery Knob</a>
+                                <a href="{{route('admin.ded.index')}}">Liste des décès</a>
                             </li>
                         </ul>
                     </li>
+                  
+                    
+                    
+                    <li class="header">Groupe 05</li>
                     <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">content_copy</i>
-                            <span>Example Pages</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="pages/examples/profile.html">Profile</a>
-                            </li>
-                            <li>
-                                <a href="pages/examples/sign-in.html">Sign In</a>
-                            </li>
-                            <li>
-                                <a href="pages/examples/sign-up.html">Sign Up</a>
-                            </li>
-                            <li>
-                                <a href="pages/examples/forgot-password.html">Forgot Password</a>
-                            </li>
-                            <li>
-                                <a href="pages/examples/blank.html">Blank Page</a>
-                            </li>
-                            <li>
-                                <a href="pages/examples/404.html">404 - Not Found</a>
-                            </li>
-                            <li>
-                                <a href="pages/examples/500.html">500 - Server Error</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">map</i>
-                            <span>Maps</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="pages/maps/google.html">Google Map</a>
-                            </li>
-                            <li>
-                                <a href="pages/maps/yandex.html">YandexMap</a>
-                            </li>
-                            <li>
-                                <a href="pages/maps/jvectormap.html">jVectorMap</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">trending_down</i>
-                            <span>Multi Level Menu</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <span>Menu Item</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <span>Menu Item - 2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Level - 2</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <span>Menu Item</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class="menu-toggle">
-                                            <span>Level - 3</span>
-                                        </a>
-                                        <ul class="ml-menu">
-                                            <li>
-                                                <a href="javascript:void(0);">
-                                                    <span>Level - 4</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="pages/changelogs.html">
-                            <i class="material-icons">update</i>
-                            <span>Changelogs</span>
-                        </a>
-                    </li>
-                    <li class="header">LABELS</li>
-                    <li>
-                        <a href="javascript:void(0);">
-                            <i class="material-icons col-red">donut_large</i>
-                            <span>Important</span>
-                        </a>
+                       
                     </li>
                     <li>
                         <a href="javascript:void(0);">
@@ -677,7 +684,7 @@
                                 <a href="{{route('admin.job.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.job.create')}}">Liste des Professions</a>
+                                <a href="{{route('admin.job.index')}}">Liste des Professions</a>
                             </li>
                    
                         
@@ -695,7 +702,7 @@
                                 <a href="{{route('admin.project.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.project.create')}}">Liste de projets marie</a>
+                                <a href="{{route('admin.project.index')}}">Liste de projets marie</a>
                             </li>
                    
                         
@@ -827,7 +834,7 @@
                                 <a href="{{route('admin.actuality.create')}}">Theme</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.actuality.create')}}">Toutes les actualités</a>
+                                <a href="{{route('admin.actuality.index')}}">Toutes les actualités</a>
                             </li>
                         </ul>
                     </li>
@@ -843,7 +850,7 @@
                             </li>
                       
                             <li>
-                                <a href="{{route('admin.ded.create')}}">Liste des décès</a>
+                                <a href="{{route('admin.ded.index')}}">Liste des décès</a>
                             </li>
                         </ul>
                     </li>

@@ -207,13 +207,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="javascript:void(0);" >
+                                <a href="{{route('admin.user.create')}}" >
                                     <span>Ajouter</span>
                                 </a>
                                
                             </li>
                             <li>
-                                <a href="javascript:void(0);" >
+                                <a href="{{route('admin.user.index')}}" >
                                     <span>Gestion des membres</span>
                                 </a>
                                 
@@ -227,16 +227,15 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="#">Ajouter</a>
+                                <a href="{{route('admin.user.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="#">Gestion des utilisateurs</a>
+                                <a href="{{route('admin.user.index')}}">Gestion des utilisateurs</a>
                             </li>
                    
                         
                           
                         </ul>
-                    </li>
                     </li>
                              <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -284,7 +283,7 @@
                                 <a href="{{route('admin.project.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.project.create')}}">Liste de projets marie</a>
+                                <a href="{{route('admin.project.index')}}">Liste de projets marie</a>
                             </li>
                    
                         
@@ -318,7 +317,7 @@
                                 <a href="{{route('admin.pharmacy.create')}}">Ajouter une pharmacie</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.pharmacy.index')}}">Pharmacie de garde</a>
+                                <a href="{{route('admin.pharmacy.degarde')}}">Pharmacie de garde</a>
                             </li>
                             <li>
                                 <a href="{{route('admin.pharmacy.index')}}">Liste des pharmacies</a>
@@ -351,13 +350,13 @@
                         <ul class="ml-menu">
                             <li>
                                 <a href="{{route('admin.event.create')}}">Ajouter un evenement</a>
-                            </li>
+                            </li> 
                             <li>
                                 <a href="{{route('admin.event.index')}}">Liste des evenements</a>
                             </li>
                             
                         </ul>
-                    </li>
+                    </li> 
 
                      <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -384,7 +383,7 @@
                     
             
                             <li>
-                                <a href="{{route('admin.message.create')}}">Toutes les message</a>
+                                <a href="{{route('admin.message.index')}}">Toutes les message</a>
                             </li>
                         </ul>
                     </li>
@@ -429,11 +428,10 @@
                             </li>
                       
                             <li>
-                                <a href="{{route('admin.ded.create')}}">Liste des décès</a>
+                                <a href="{{route('admin.ded.index')}}">Liste des décès</a>
                             </li>
                         </ul>
                     </li>
-                  
                   
                     
                     

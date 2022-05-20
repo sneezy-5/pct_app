@@ -12,7 +12,7 @@ $cd pct_app/
 $composer update 
 
 3-set migration
-$php artisan migration:fresh --seed
+$php artisan migrate:fresh --seed
     wait until the migraton finishes
 
 

@@ -473,28 +473,30 @@
 										</div>
 										<div class="coment-area">
 											<ul class="we-comet">
+											
 												<li>
 													<div class="comet-avatar">
-														<img src="images/resources/comet-1.jpg" alt="">
+														<img src="images/resources/comet-1.jp" alt="">
 													</div>
 													<div class="we-comment">
 														<div class="coment-head">
-															<h5><a href="time-line.html" title="">Jason borne</a></h5>
+															<h5><a href="time-line.html" title=""></a></h5>
 															<span>1 year ago</span>
 															<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
 														</div>
-														<p>we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post</p>
+														<p></p>
 													</div>
 												
 												</li>
-												
+											
 												<li class="post-comment">
 													<div class="comet-avatar">
 														<img src="/images/{{$user->picture}}" alt="">
 													</div>
 													<div class="post-comt-box">
-														<form method="post">
-															<textarea placeholder="Post your comment"></textarea>
+														<form method="post" action="{{route('comment.store_comment',['actuality'=>$actuality->id])}}">
+															@csrf
+															<textarea placeholder="Post your comment" class="comment_arre" name="comment"></textarea>
 															<div class="add-smiles">
 																<span class="em em-expressionless" title="add icon"></span>
 															</div>
@@ -512,7 +514,7 @@
 																<i class="em em-rage"></i>
 																<i class="em em-stuck_out_tongue"></i>
 															</div>
-															<button type="submit"></button>
+															<button type="submit"  style="color:black;" >Comment</button>
 														</form>	
 													</div>
 												</li>
@@ -850,6 +852,42 @@
 	
 
 		<script>
+
+function Comment(id){
+			
+			payload = {
+				
+				"actuality_id": id,
+				"comment":document.querySelector('.comment_arre').value,
+				"user_id":<?php echo auth()->user()->id?>
+			}
+
+			$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': '<?php echo csrf_token(); ?>'
+    }
+});
+			
+			$.ajax({
+				type: 'POST',
+				dataType: "json",
+				url: "{{ route('comment.comment') }}", // production
+				data: payload,
+				timeout: 5000,
+				success: function(data) {
+					console.log("SUCCESS", data.response);
+
+					document.querySelector('.we-comet').textContent= data.response;
+					
+					
+				},
+				error: function(data) {
+					console.error("ERROR...", data)
+					alert("Something went wrong.")
+				},
+			});
+			}
+
 
 function createOrReturnPrivateChat(id){
 			

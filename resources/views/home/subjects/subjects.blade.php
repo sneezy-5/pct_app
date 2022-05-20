@@ -435,10 +435,11 @@
 													<a href="time-line.html" title=""><img src="{{$subject->image}}" alt=""></a>
 												</figure>
 												<div class="pepl-info">
-													<h4><a href="time-line.html" title="">{{$subject->title}}</a></h4>
+												<h4><a href="#" title="" style="color:brown;">{{$subject->user_name}}</a></h4>
+													<h5><a href="#" title="">{{$subject->title}}</a></h5>
 													<span>{{$subject->describe}}</span>
-													<em></em>
-													<!-- <a href="#" title="" class="add-butn" data-ripple="">Voir<span class="ripple"><span class="ink" style="height: 74px; width: 74px; background-color: rgb(255, 232, 8); top: -28.2px; left: -14.15px;"></span></span></a> -->
+													<em class="voted" >Vote:{{$subject->voted}}</em>
+													<a href="#" title="" class="add-butn" data-ripple="" onclick="IncrementVoted('{{$subject->id}}')">Votez<span class="ripple"><span class="ink" style="height: 74px; width: 74px; background-color: rgb(255, 232, 8); top: -28.2px; left: -14.15px;"></span ></span></a>
 												</div>
 											</div>
 										</li>
@@ -773,7 +774,43 @@
 		</div><!-- side panel -->		
 	
 
-		<script>
+	<script>
+
+
+function IncrementVoted(id){
+			
+			payload = {
+				
+				"subject_id": id,
+			}
+
+			$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': '<?php echo csrf_token(); ?>'
+    }
+});
+			
+			$.ajax({
+				type: 'POST',
+				dataType: "json",
+				url: "{{ route('subject.voted') }}", // production
+				data: payload,
+				timeout: 5000,
+				success: function(data) {
+					console.log("SUCCESS", data.response);
+
+					document.querySelector('.voted').textContent= data.response;
+					
+					
+				},
+				error: function(data) {
+					console.error("ERROR...", data)
+					alert("Something went wrong.")
+				},
+			});
+			}
+
+
 
 function createOrReturnPrivateChat(id){
 			

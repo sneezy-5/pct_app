@@ -19,14 +19,16 @@ class ActualityController extends Controller
      */
     public function index()
     {
-        $actualities = Actulity::orderBy('id', 'DESC')->get();;
+        $actualities = Actulity::orderBy('id', 'DESC')->get();
+        $comment = collect();
         $users  =  User::where('id','!=',auth()->user()->id)->get();
         $data = collect();
 
        
         $chatroom = User::where('id', auth()->user()->id)->first()->chat_room()->orderBy('created_at', 'asc')->get();
 
-        
+
+
         for($i=0; $i<$chatroom->count(); $i++){
             
             $data->push([

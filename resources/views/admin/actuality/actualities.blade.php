@@ -618,13 +618,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="ajouter-membre.html" >
+                                <a href="{{route('admin.user.create')}}" >
                                     <span>Ajouter</span>
                                 </a>
                                
                             </li>
                             <li>
-                                <a href="liste-membre.html" >
+                                <a href="{{route('admin.user.index')}}" >
                                     <span>Gestion des membres</span>
                                 </a>
                                 
@@ -638,17 +638,16 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="ajouter-user.html">Ajouter</a>
+                                <a href="{{route('admin.user.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="#">Gestion des utilisateurs</a>
+                                <a href="{{route('admin.user.index')}}">Gestion des utilisateurs</a>
                             </li>
                    
                         
                           
                         </ul>
                     </li>
-                   
                              <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">swap_calls</i>
@@ -677,7 +676,7 @@
                                 <a href="{{route('admin.job.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.job.create')}}">Liste des Professions</a>
+                                <a href="{{route('admin.job.index')}}">Liste des Professions</a>
                             </li>
                    
                         
@@ -695,7 +694,7 @@
                                 <a href="{{route('admin.project.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.project.create')}}">Liste de projets marie</a>
+                                <a href="{{route('admin.project.index')}}">Liste de projets marie</a>
                             </li>
                    
                         
@@ -762,13 +761,13 @@
                         <ul class="ml-menu">
                             <li>
                                 <a href="{{route('admin.event.create')}}">Ajouter un evenement</a>
-                            </li>
+                            </li> 
                             <li>
                                 <a href="{{route('admin.event.index')}}">Liste des evenements</a>
                             </li>
                             
                         </ul>
-                    </li>
+                    </li> 
 
                      <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -795,7 +794,7 @@
                     
             
                             <li>
-                                <a href="{{route('admin.message.create')}}">Toutes les message</a>
+                                <a href="{{route('admin.message.index')}}">Toutes les message</a>
                             </li>
                         </ul>
                     </li>
@@ -824,10 +823,7 @@
                                 <a href="{{route('admin.actuality.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.actuality.create')}}">Theme</a>
-                            </li>
-                            <li>
-                                <a href="{{route('admin.actuality.create')}}">Toutes les actualités</a>
+                                <a href="{{route('admin.actuality.index')}}">Toutes les actualités</a>
                             </li>
                         </ul>
                     </li>
@@ -843,13 +839,10 @@
                             </li>
                       
                             <li>
-                                <a href="{{route('admin.ded.create')}}">Liste des décès</a>
+                                <a href="{{route('admin.ded.index')}}">Liste des décès</a>
                             </li>
                         </ul>
                     </li>
-                  
-                    
-                  
                   
                     
                     

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubjectsTable extends Migration
+class CreateVotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateSubjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subjects', function (Blueprint $table) {
+        Schema::create('votes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('describe');
-            $table->integer('voted')->default(0)->nullable();
             $table->timestamps();
 
+            $table->foreignId('subject_id')
+            ->constrained('subjects')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            
             $table->foreignId('user_id')
                   ->constrained('users')
                   ->onUpdate('cascade')
@@ -34,6 +36,6 @@ class CreateSubjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subjects');
+        Schema::dropIfExists('votes');
     }
 }
