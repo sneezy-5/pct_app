@@ -572,13 +572,13 @@
                     
                 </div>
                 <!-- #User Info -->
-            <!-- User Info -->
-            <div class="user-info">
+                   <!-- User Info -->
+                   <div class="user-info">
                 <div class="image">
-                    <img src="images/user-img.png" width="48" height="48" alt="User" />
+                    <img src="{{asset('/images/user-img.png')}}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>David Sibahi</b> </div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>{{auth()->user()->name}}</b> </div>
                     <div class="email">Administrateur</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
@@ -914,10 +914,10 @@
                             <div class="table-responsive">
                                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="DataTables_Table_0_length"><label>Liste <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> personne(s)</label></div></div><div class="col-sm-6"><div id="DataTables_Table_0_filter" class="dataTables_filter"><label>Recherche:<input type="search" class="form-control input-sm" placeholder="" aria-controls="DataTables_Table_0"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
                                     <thead>
-                                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 173px;">Titre</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 284px;">Description</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 122px;">Action</th></tr>
+                                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 173px;">Titre</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 284px;">Description</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 122px;">Vote</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 122px;">Action</th></tr>
                                     </thead>
                                     <tfoot>
-                                        <tr><th rowspan="1" colspan="1">Titre</th><th rowspan="1" colspan="1">Description</th><th rowspan="1" colspan="1">Action</th>
+                                        <tr><th rowspan="1" colspan="1">Titre</th><th rowspan="1" colspan="1">Description</th><th rowspan="1" colspan="1">Vote</th><th rowspan="1" colspan="1">Action</th>
                                     </tfoot>
                                     <tbody>
                                     @if($subjects->isEmpty())     
@@ -927,9 +927,14 @@
                                             @foreach($subjects as $subject)
                                             <td class="sorting_1">{{$subject->title}}</td>
                                             <td>{{$subject->describe}}</td>
-                      
-                                              <td> <a class="btn btn-secondary" href="{{route('admin.subject.edit',['subject'=>$subject->id])}}">Editer</a></td>
-                                                <td> <a class="btn btn-primary" href="{{route('admin.subject.show',['subject'=>$subject->id])}}">Afficher</a></td>
+                                            <td>{{$subject->voted}}</td>
+                                              <!-- <td> <a class="btn btn-secondary" href="{{route('admin.subject.edit',['subject'=>$subject->id])}}">Approuver</a></td> -->
+                                                <!-- <td> <a class="btn btn-primary" href="{{route('admin.subject.show',['subject'=>$subject->id])}}">Afficher</a></td> -->
+                                                <td>   <form  action="{{ route('admin.subject.approuve', ['subject'=>$subject->id])}}" method="post"> 
+                          @csrf     
+                          @method('put')
+                          <button class="btn btn-success" type="submit">Approuver</button>
+                        </form></td>
                                                 <td>   <form  action="{{ route('admin.subject.destroy', ['subject'=>$subject->id])}}" method="post"> 
                           @csrf     
                           @method('delete')

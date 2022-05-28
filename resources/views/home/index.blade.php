@@ -25,7 +25,7 @@
 				<a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
 			</span>
 			<span class="mh-text">
-				<a href="newsfeed.html" title=""><img src="{{asset('images/logo2.png')}}" alt=""></a>
+				<a href="#" title=""><img src="{{asset('images/logo2.png')}}" alt=""></a>
 			</span>
 			<span class="mh-btns-right">
 				<a class="fa fa-sliders" href="#shoppingbag"></a>
@@ -60,73 +60,33 @@
 				<li><a href="newsfeed.html" title="Home" data-ripple=""><i class="ti-home"></i></a></li>
 				<li>
 					<a href="#" title="Notification" data-ripple="">
-						<i class="ti-bell"></i><span>20</span>
+						<i class="ti-bell"></i><span>{{auth()->user()->unreadNotifications->count()}}</span>
 					</a>
 					<div class="dropdowns">
-						<span>4 New Notifications</span>
+						<span>{{auth()->user()->unreadNotifications->count()}} New Notifications</span>
+						
 						<ul class="drops-menu">
+							@foreach(auth()->user()->unreadNotifications as $notification)
 							<li>
-								<a href="notifications.html" title="">
-									<img src="../images/resources/thumb-1.jpg" alt="">
+								<a href="" title="">
+									<!-- <img src="images/resources/thumb-1.jpg" alt=""> -->
 									<div class="mesg-meta">
-										<h6>sarah Loren</h6>
-										<span>Hi, how r u dear ...?</span>
-										<i>2 min ago</i>
+										<!-- <h6>sarah Loren</h6> -->
+										<span> {{$notification->data['message']}}</span>
+										<i>{{$notification->created_at}}</i>
 									</div>
 								</a>
 								<span class="tag green">New</span>
 							</li>
-							<li>
-								<a href="notifications.html" title="">
-									<img src="../images/resources/thumb-2.jpg" alt="">
-									<div class="mesg-meta">
-										<h6>Jhon doe</h6>
-										<span>Hi, how r u dear ...?</span>
-										<i>2 min ago</i>
-									</div>
-								</a>
-								<span class="tag red">Reply</span>
-							</li>
-							<li>
-								<a href="notifications.html" title="">
-									<img src="../images/resources/thumb-3.jpg" alt="">
-									<div class="mesg-meta">
-										<h6>Andrew</h6>
-										<span>Hi, how r u dear ...?</span>
-										<i>2 min ago</i>
-									</div>
-								</a>
-								<span class="tag blue">Unseen</span>
-							</li>
-							<li>
-								<a href="notifications.html" title="">
-									<img src="../images/resources/thumb-4.jpg" alt="">
-									<div class="mesg-meta">
-										<h6>Tom cruse</h6>
-										<span>Hi, how r u dear ...?</span>
-										<i>2 min ago</i>
-									</div>
-								</a>
-								<span class="tag">New</span>
-							</li>
-							<li>
-								<a href="notifications.html" title="">
-									<img src="../images/resources/thumb-5.jpg" alt="">
-									<div class="mesg-meta">
-										<h6>Amy</h6>
-										<span>Hi, how r u dear ...?</span>
-										<i>2 min ago</i>
-									</div>
-								</a>
-								<span class="tag">New</span>
-							</li>
+							@endforeach
+						
 						</ul>
 						<a href="notifications.html" title="" class="more-mesg">view more</a>
 					</div>
 				</li>
 				<li>
-					<a href="#" title="Messages" data-ripple=""><i class="ti-comment"></i><span>12</span></a>
-					<div class="dropdowns">
+					<a href="#" title="Messages" data-ripple=""><i class="ti-comment"></i><span></span></a>
+					<!-- <div class="dropdowns">
 						<span>5 New Messages</span>
 						<ul class="drops-menu">
 							<li>
@@ -186,7 +146,7 @@
 							</li>
 						</ul>
 						<a href="messages.html" title="" class="more-mesg">view more</a>
-					</div>
+					</div> -->
 				</li>
 				<li><a href="#" title="Languages" data-ripple=""><i class="fa fa-globe"></i></a>
 					<div class="dropdowns languages">
@@ -198,9 +158,9 @@
 				</li>
 			</ul>
 			<div class="user-img">
-				<img src="images/resources/admin.jpg" alt="">
+				<img src="/image/{{auth()->user()->picture}}" alt="">
 				<span class="status f-online"></span>
-				<div class="user-setting">
+				<!-- <div class="user-setting">
 					<a href="#" title=""><span class="status f-online"></span>online</a>
 					<a href="#" title=""><span class="status f-away"></span>away</a>
 					<a href="#" title=""><span class="status f-off"></span>offline</a>
@@ -209,7 +169,7 @@
 					<a href="#" title=""><i class="ti-target"></i>activity log</a>
 					<a href="#" title=""><i class="ti-settings"></i>account setting</a>
 					<a href="#" title=""><i class="ti-power-off"></i>log out</a>
-				</div>
+				</div> -->
 			</div>
 			<span class="ti-menu main-menu" data-ripple=""></span>
 		</div>
@@ -231,7 +191,7 @@
 						<div class="col-lg-2 col-sm-3">
 							<div class="user-avatar">
 								<figure>
-									<img src="{{asset('images/resources/user-avatar.jpg')}}" alt="">
+									<img src="/images/{{auth()->user()->picture}}" alt="">
 									<form class="edit-phto">
 										<i class="fa fa-camera-retro"></i>
 										<label class="fileContainer">
@@ -271,7 +231,7 @@
 											<div class="inbox-navigation">
 												
 												<ul>
-													<li class="active"><a title=""><i class="fa fa-inbox"></i>Message</a><span>4</span></li>
+													<li class="active"><a title="" href="{{route('message.index')}}"><i class="fa fa-inbox"></i>Message</a><span>{{$chatroom}}</span></li>
 													<li>
 												</ul>
 												
@@ -315,111 +275,30 @@
 							</div>
 							<div class="col-lg-3">
 								<aside class="sidebar static">
-									<div class="advertisment-box">
+									<!-- <div class="advertisment-box">
 										<h4 class="">advertisment</h4>
 										<figure>
 											<a href="#" title="Advertisment"><img src="images/resources/ad-widget.jpg" alt=""></a>
 										</figure>
-									</div>
+									</div> -->
 									<div class="widget friend-list stick-widget">
-										<h4 class="widget-title">Friends</h4>
+										<h4 class="widget-title">Utilisateurs</h4>
 										<div id="searchDir"></div>
 										<ul id="people-list" class="friendz-list">
+										@foreach($users as $user)
 											<li>
 												<figure>
-													<img src="images/resources/friend-avatar.jpg" alt="">
+													<img src="/images/{{$user->picture}}" alt="">
 													<span class="status f-online"></span>
 												</figure>
 												<div class="friendz-meta">
-													<a href="time-line.html">bucky barnes</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f6819f9882938485999a929384b6919b979f9ad895999b">[email&#160;protected]</a></i>
+													<a href="time-line.html" onclick="createOrReturnPrivateChat('{{$user->id}}')">{{$user->name}} </a>
+													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a0d7c9ced4c5d2d3cfccc4c5d2e0c7cdc1c9cc8ec3cfcd">[email&#160;protected]</a></i>
 												</div>
 											</li>
-											<li>
-												<figure>
-													<img src="../images/resources/friend-avatar2.jpg" alt="">
-													<span class="status f-away"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">Sarah Loren</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d6b4b7a4b8b3a596b1bbb7bfbaf8b5b9bb">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												<figure>
-													<img src="../images/resources/friend-avatar3.jpg" alt="">
-													<span class="status f-off"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">jason borne</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="157f74667a7b77557278747c793b767a78">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												<figure>
-													<img src="../images/resources/friend-avatar4.jpg" alt="">
-													<span class="status f-off"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">Cameron diaz</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="771d160418191537101a161e1b5914181a">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												
-												<figure>
-													<img src="../images/resources/friend-avatar5.jpg" alt="">
-													<span class="status f-online"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">daniel warber</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="462c273529282406212b272f2a6825292b">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												
-												<figure>
-													<img src="../images/resources/friend-avatar6.jpg" alt="">
-													<span class="status f-away"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">andrew</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="94fef5e7fbfaf6d4f3f9f5fdf8baf7fbf9">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												
-												<figure>
-													<img src="../Simages/resources/friend-avatar7.jpg" alt="">
-													<span class="status f-off"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">amy watson</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="650f04160a0b07250208040c094b060a08">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												
-												<figure>
-													<img src="images/resources/friend-avatar5.jpg" alt="">
-													<span class="status f-online"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">daniel warber</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d3b9b2a0bcbdb193b4beb2babffdb0bcbe">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												
-												<figure>
-													<img src="images/resources/friend-avatar2.jpg" alt="">
-													<span class="status f-away"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">Sarah Loren</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="335152415d564073545e525a5f1d505c5e">[email&#160;protected]</a></i>
-												</div>
-											</li>
+										@endforeach
+											
+										
 										</ul>
 										<div class="chat-box">
 											<div class="chat-head">
@@ -500,27 +379,27 @@
 					<div class="widget">
 						<div class="foot-logo">
 							<div class="logo">
-								<a href="/" title=""><img src="images/logo.png" alt=""></a>
+								<a href="index-2.html" title=""><img src="images/logo.png" alt=""></a>
 							</div>	
 							<p>
-								The trio took this simple idea and built it into the world’s leading carpooling platform.
+								L'UVCI et le village d'Allakro collaborent pour un bien-être des populations villageoies. Cette application permet un bon fonctionnement des activites.
 							</p>
 						</div>
 						<ul class="location">
 							<li>
 								<i class="ti-map-alt"></i>
-								<p>33 new montgomery st.750 san francisco, CA USA 94105.</p>
+								<p>Abidjan 2plateaux, Cote d'Ivoire.</p>
 							</li>
 							<li>
 								<i class="ti-mobile"></i>
-								<p>+1-56-346 345</p>
+								<p>+225 07-98-5634-6345</p>
 							</li>
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-2 col-md-4">
+				<div class="col-lg-2 col-md-6">
 					<div class="widget">
-						<div class="widget-title"><h4>follow</h4></div>
+						<div class="widget-title"><h4>Nos comptes</h4></div>
 						<ul class="list-style">
 							<li><i class="fa fa-facebook-square"></i> <a href="https://web.facebook.com/shopcircut/" title="">facebook</a></li>
 							<li><i class="fa fa-twitter-square"></i><a href="https://twitter.com/login?lang=en" title="">twitter</a></li>
@@ -530,21 +409,21 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-2 col-md-4">
+				<div class="col-lg-2 col-md-6">
 					<div class="widget">
-						<div class="widget-title"><h4>Navigate</h4></div>
+						<div class="widget-title"><h4>Navigation</h4></div>
 						<ul class="list-style">
-							<li><a href="about.html" title="">about us</a></li>
-							<li><a href="contact.html" title="">contact us</a></li>
-							<li><a href="terms.html" title="">terms & Conditions</a></li>
-							<li><a href="#" title="">RSS syndication</a></li>
-							<li><a href="sitemap.html" title="">Sitemap</a></li>
+							<li><a href="#" title="">Apropos</a></li>
+							<li><a href="#" title="">Nous contacter</a></li>
+							<li><a href="#" title="">Conditions et termes</a></li>
+							
+							<li><a href="#" title="">Sitemap</a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-2 col-md-4">
+				<div class="col-lg-2 col-md-6">
 					<div class="widget">
-						<div class="widget-title"><h4>useful links</h4></div>
+						<div class="widget-title"><h4>Liens</h4></div>
 						<ul class="list-style">
 							<li><a href="#" title="">leasing</a></li>
 							<li><a href="#" title="">submit route</a></li>
@@ -554,16 +433,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-2 col-md-4">
-					<div class="widget">
-						<div class="widget-title"><h4>download apps</h4></div>
-						<ul class="colla-apps">
-							<li><a href="https://play.google.com/store?hl=en" title=""><i class="fa fa-android"></i>android</a></li>
-							<li><a href="https://www.apple.com/lae/ios/app-store/" title=""><i class="ti-apple"></i>iPhone</a></li>
-							<li><a href="https://www.microsoft.com/store/apps" title=""><i class="fa fa-windows"></i>Windows</a></li>
-						</ul>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</footer><!-- footer -->

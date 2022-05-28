@@ -46,8 +46,7 @@ class MessageController extends Controller
             $data->push([
                 'room_message'=>Message::where('chat_room_id', [$chat[$i]->id])->first(),
                 'user'=>User::where('id', [auth()->user()->id== $chat[$i]->user1_id ? $chat[$i]->user2_id : $chat[$i]->user1_id])->first()->name,
-               // 'room_id'=>User::where('id', [auth()->user()->id== $chatroom[$i]->user1_id ? $chatroom[$i]->user2_id : $chatroom[$i]->user1_id])->first()->id,
-                //'room_id'=>Message::where('chat_room_id', [$chatroom[$i]->id])->first()->chat_room_id,
+                'user_pic'=>User::where('id', [auth()->user()->id== $chat[$i]->user1_id ? $chat[$i]->user2_id : $chat[$i]->user1_id])->first()->picture,
                 'room_id'=>$chat[$i]->id
             ]);
 
@@ -154,8 +153,7 @@ class MessageController extends Controller
             $data->push([
                 'room_message'=>Message::where('chat_room_id', [$chat[$i]->id])->first(),
                 'user'=>User::where('id', [auth()->user()->id== $chat[$i]->user1_id ? $chat[$i]->user2_id : $chat[$i]->user1_id])->first()->name,
-               // 'room_id'=>User::where('id', [auth()->user()->id== $chatroom[$i]->user1_id ? $chatroom[$i]->user2_id : $chatroom[$i]->user1_id])->first()->id,
-                //'room_id'=>Message::where('chat_room_id', [$chatroom[$i]->id])->first()->chat_room_id,
+                'user_pic'=>User::where('id', [auth()->user()->id== $chat[$i]->user1_id ? $chat[$i]->user2_id : $chat[$i]->user1_id])->first()->picture,
                 'room_id'=>$chat[$i]->id
             ]);
 

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
@@ -38,17 +39,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-           $request->validate([
+         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'civility' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            //'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'civility' => $request->civlity,
+            'phone' => $request->phone,
+            'username' => $request->username,
             'password' => Hash::make($request->password),
         ]);
+
+
 
         return redirect()->route('admin.user.index');
     }
@@ -88,8 +95,8 @@ class UserController extends Controller
     {
          $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            //'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
          $data = $request->except('_token');

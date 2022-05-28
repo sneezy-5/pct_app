@@ -828,7 +828,7 @@
                                 <a href="{{route('admin.actuality.create')}}">Theme</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.actuality.create')}}">Toutes les actualités</a>
+                                <a href="{{route('admin.actuality.index')}}">Toutes les actualités</a>
                             </li>
                         </ul>
                     </li>
@@ -844,7 +844,7 @@
                             </li>
                       
                             <li>
-                                <a href="{{route('admin.ded.create')}}">Liste des décès</a>
+                                <a href="{{route('admin.ded.index')}}">Liste des décès</a>
                             </li>
                         </ul>
                     </li>

@@ -6,9 +6,10 @@ use App\Models\User;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Actulity;
 use App\Models\Vote;
 use App\Notifications\SendNotification;
-
+use App\Notifications\ValidateSubject;
 
 class SubjectController extends Controller
 {
@@ -20,7 +21,7 @@ class SubjectController extends Controller
     public function index()
     {
        // $subjects = User::find(auth()->user()->id)->subject;
-       $subjects=  Subject::all();
+       $subjects=  Subject::orderBy('id', 'DESC')->where('is_valided',0)->get();
         $users  =  User::where('id','!=',auth()->user()->id)->get();
 
 
@@ -135,12 +136,25 @@ class SubjectController extends Controller
         return redirect()->route('subject.index');
     }
 
+    public function approuved($id)
+    {
+       $subejct= Subject::find($id);
+       $users = User::all();
+       $subejct->is_valided = 1;
+       $subejct->save();
+       //Actulity::create(['title'=>''])
+       foreach($users as $user){
+        $user->notify(new ValidateSubject($subejct));
+    }
+        return redirect()->route('subject.index');
+    }
+
 
     //compteur de vote
     public function voted(Request $request)
     {
       
-        if(!Vote::where('user_id',auth()->user()->id)->exists()){
+        if(!Vote::select('*')->where(['subject_id'=>$request['subject_id'],'user_id'=>auth()->user()->id,])->exists()){
             $response =Subject::find($request['subject_id']);
             Vote::create(['subject_id'=>$request['subject_id'],'user_id'=>auth()->user()->id]);
             $response->voted+=1;

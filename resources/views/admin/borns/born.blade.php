@@ -168,7 +168,7 @@
                     <img src="../../images/user-img.png" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>David Sibahi</b> </div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>{{auth()->user()->name}}</b> </div>
                     <div class="email">Administrateur</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
@@ -480,7 +480,7 @@
             <h2>Ajouter une naissance</h2>
         </div>
         <div class="card">
-           <form method="post" action="{{route('admin.born.store')}}">
+           <form method="post" action="{{route('admin.born.store')}}" enctype="multipart/form-data">
             @csrf
  
             <div class="body">

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/color.css')}}">
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+	<link rel="stylesheet" href="{{asset('fontawesome-free-5.14.0-web/css/all.min.css')}}">
 
 </head>
 <body>
@@ -152,19 +153,20 @@
 						</ul>
 				</li> -->
 				<li>
-					<a href="/" title="">Actualité</a>
+					<a href="#" title="">Actualité</a>
 					<ul>
-						<li><a href="#" title="">Information du village</a></li>
+						<li><a href="{{route('actuality.info')}}" title="">Information du village</a></li>
 						<li><a href="{{route('born.index')}}" title="">Naissance</a></li>
 						<li><a href="{{route('ded.index')}}" title="">Décès</a></li>
 						<li><a href="{{route('mary.index')}}" title="">Mariage</a></li>
 					</ul>
 				</li>
 				<li>
+				<img src="/images/2019-05-21.png" alt="uvci_image" height="40" width="40">
 					<a href="#" title="">UVCI</a>
 					<ul>
-						<li><a href="#" title="">Presentation</a></li>
-						<li><a href="{{route('project.index')}}" title="">Activité</a></li>
+						<li><a href="https://uvci.edu.ci/portail/Main/index/fr" title="">Presentation</a></li>
+						<li><a href="http://campus.uvci.edu.ci/" title="">Activité</a></li>
 						<li><a href="#" title="">contact</a></li>
 						<li><a href="http://scolarite.uvci.edu.ci/" title="">Site web UVCI</a></li>
 						
@@ -282,7 +284,7 @@
 				</li>
 			</ul>
 			<div class="user-img">
-				<img src="image" alt="">
+				<img src="{{auth()->user()->picture}}" alt="">
 				<span class="status f-online"></span>
 				<div class="user-setting">
 					
@@ -308,55 +310,55 @@
 						<div class="row" id="page-contents">
 							<div class="col-lg-3">
 								<aside class="sidebar static">
-									<div class="widget">
+								<div class="widget">
 										<h4 class="widget-title">Racourcis</h4>
-                    <ul class="naves">
+										<ul class="naves">
 											<li>
-												<i class="ti-clipboard"></i>
-												<a href="/" title="">Actualité</a>
+												<i class="fa fa-newspaper-o"></i>
+												<a href="/" title="">Actualités</a>
 											</li>
 											
 											<li>
-												<i class="ti-image"></i>
-												<a href="{{route('pharmacy.index')}}" title="">Pharmacie</a>
+												<i class="fas fa-first-aid"></i>
+												<a href="{{route('pharmacy.index')}}" title="">Pharmacies</a>
 											</li>
 											<li>
-												<i class="ti-video-camera"></i>
-												<a href="{{route('emergency.index')}}" title="">Hopital</a>
+											<i class="fas fa-hospital"></i>
+												<a href="{{route('emergency.index')}}" title="">Hopitaux</a>
 											</li>
 											<li>
-												<i class="ti-video-camera"></i>
-												<a href="{{route('job.index')}}" title="">Profession</a>
+											<i class="fa fa-tasks" aria-hidden="true"></i>
+												<a href="{{route('job.index')}}" title="">Professions</a>
 											</li>
 											<li>
-												<i class="ti-video-camera"></i>
-												<a href="{{route('event.index')}}" title="">Evenemment</a>
+												<i class="fa fa-calendar"></i>
+												<a href="{{route('event.index')}}" title="">Évènements</a>
 											</li>
 											<li>
-												<i class="ti-video-camera"></i>
-												<a href="{{route('project.index')}}" title="">Projet Mairie</a>
+												<i class="fas fa-project-diagram"></i>
+												<a href="{{route('project.index')}}" title="">Projets Mairie</a>
 											</li>
 											<li>
-												<i class="ti-video-camera"></i>
+											<i class="fas fa-school"></i>
 												<a href="{{route('school.index')}}" title="">Ecoles</a>
 											</li>
 										
 											<li>
 												<i class="ti-video-camera"></i>
-												<a href="{{route('subject.index')}}" title="">Subjection</a>
+												<a href="{{route('subject.index')}}" title="">subjections</a>
 											</li>
 											<li>
-												<i class="ti-comments-smiley"></i>
-												<a href="#" title="">Messages</a>
+											<i class="fas fa-comment"></i>
+												<a href="{{route('message.index')}}" title="">Messages</a>
 											</li>
 											<li>
-												<i class="ti-bell"></i>
-												<a href="#" title="">Reglage</a>
+											<i class="fas fa-user"></i>
+												<a href="/profile" title="">Profil</a>
 											</li>
 											
 											
 											<li>
-												<i class="ti-power-off"></i>
+												<!-- <i class="ti-power-off"></i> -->
 												<form action="{{route('logout')}}" method="post">
 													@csrf
 												<button type="submit" title="">Deconnexion</button>

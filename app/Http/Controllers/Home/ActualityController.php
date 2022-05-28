@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Comment;
 use App\Models\Message;
 use App\Models\Actulity;
+use App\Models\ChatRoom;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Notifications\ActualityNotiication;
@@ -19,6 +20,25 @@ class ActualityController extends Controller
      */
     public function index()
     {
+        $chat =  [];
+        $users  =  User::where('id','!=',auth()->user()->id)->get();
+        if(ChatRoom::where('user1_id',auth()->user()->id)->exists()){
+            $chatroom = ChatRoom::where('user1_id',auth()->user()->id)->orderBy('created_at', 'asc')->get();
+ 
+           foreach($chatroom as $key=>$value){
+            array_push($chat,$value );
+        }
+           
+        }
+        if (ChatRoom::where('user2_id',auth()->user()->id)->exists()){
+            
+           $chatroom = ChatRoom::where('user2_id',auth()->user()->id)->orderBy('created_at', 'asc')->get();
+          //  array_push($chat, ChatRoom::where('user2_id',auth()->user()->id)->orderBy('created_at', 'asc')->get('id'));
+            foreach($chatroom as $key=>$value){
+                array_push($chat,$value );
+            }
+        }
+
         $actualities = Actulity::orderBy('id', 'DESC')->get();
         $comment = collect();
         $users  =  User::where('id','!=',auth()->user()->id)->get();
@@ -40,7 +60,7 @@ class ActualityController extends Controller
 
         }
 
-        return view('home.actualities',['actualities'=>$actualities, 'users'=>$users, 'messages'=>$data]);
+        return view('home.actualities',['actualities'=>$actualities, 'users'=>$users, 'messages'=>$data,'chatroom'=>count($chat)]);
     }
 
     /**
@@ -206,5 +226,55 @@ class ActualityController extends Controller
         $comments = Actulity::find($post_id)->comment;
 
         return response()->json(['comments'=>$comments]);
+    }
+
+     //retun actualities comments
+     public function info_village(){
+
+        
+            $chat =  [];
+            $users  =  User::where('id','!=',auth()->user()->id)->get();
+            if(ChatRoom::where('user1_id',auth()->user()->id)->exists()){
+                $chatroom = ChatRoom::where('user1_id',auth()->user()->id)->orderBy('created_at', 'asc')->get();
+     
+               foreach($chatroom as $key=>$value){
+                array_push($chat,$value );
+            }
+               
+            }
+            if (ChatRoom::where('user2_id',auth()->user()->id)->exists()){
+                
+               $chatroom = ChatRoom::where('user2_id',auth()->user()->id)->orderBy('created_at', 'asc')->get();
+              //  array_push($chat, ChatRoom::where('user2_id',auth()->user()->id)->orderBy('created_at', 'asc')->get('id'));
+                foreach($chatroom as $key=>$value){
+                    array_push($chat,$value );
+                }
+            }
+    
+            $actualities = Actulity::orderBy('id', 'DESC')->get();
+            $comment = collect();
+            $users  =  User::where('id','!=',auth()->user()->id)->get();
+            $data = collect();
+    
+           
+            $chatroom = User::where('id', auth()->user()->id)->first()->chat_room()->orderBy('created_at', 'asc')->get();
+    
+    
+    
+            for($i=0; $i<$chatroom->count(); $i++){
+                
+                $data->push([
+                    'room_message'=>Message::where('chat_room_id', [$chatroom[$i]->id])->first(),
+                    'user'=>User::where('id', [auth()->user()->id== $chatroom[$i]->user1_id ? $chatroom[$i]->user2_id : $chatroom[$i]->user1_id])->first()->name,
+                    //'count'=>Message::where('chat_room_id', [$chatroom[$i]->id])->first()->
+                    'room_id'=>$chatroom[$i]->id
+                ]);
+    
+            }
+
+            
+        $actualities = Actulity::where('type','info_village')->get();
+
+        return view('home.infovillage',['actualities'=>$actualities, 'users'=>$users, 'messages'=>$data,'chatroom'=>count($chat)]);
     }
 }

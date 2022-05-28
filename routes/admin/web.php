@@ -63,5 +63,7 @@ use App\Http\Controllers\Admin\UserController;
     Route::get('/pharmacie_de_garde', [PharmacyController::class, 'pharDegarde'])->name('pharmacy.degarde');
     Route::get('/services_add/{id}', [ServiceController::class, 'create_service'])->name('service.create_service');
     Route::get('/sick_add/{id}', [SikController::class, 'create_sick'])->name('sick.create_sick');
+    Route::put('/subject_approuve/{subject}', [SubjectController::class, 'approuved'])->name('subject.approuve');
+
   });
  });

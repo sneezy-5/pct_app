@@ -162,13 +162,13 @@
                     
                 </div>
                 <!-- #User Info -->
-            <!-- User Info -->
-            <div class="user-info">
+                 <!-- User Info -->
+                 <div class="user-info">
                 <div class="image">
-                    <img src="../../images/user-img.png" width="48" height="48" alt="User" />
+                    <img src="{{asset('/images/user-img.png')}}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>David Sibahi</b> </div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>{{auth()->user()->name}}</b> </div>
                     <div class="email">Administrateur</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
@@ -477,45 +477,88 @@
               @if($errors)
                 {{$errors}}
                 @endif
-            <h2>Ajouter un hopital</h2>
+            <h2>Ajouter un Utilisateur</h2>
         </div>
         <div class="card">
            <form method="post" action="{{route('admin.user.update',['user'=>$user->id])}}">
             @csrf
-            @method('put')
+ 
             <div class="body">
                 <div class="demo-masked-input">
                     <div class="row clearfix">
                         <div class="col-md-12">
-                            <b>Nom de la mère</b>
+                            <b>Nom et prenom</b>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="material-icons">perm_identity</i>
+                                    <i class="material-icons">perm_idenomntity</i>
                                 </span>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" placeholder="nom" name="name" value="{{$user->name}}" >
+                                    <input type="text" class="form-control" placeholder="nom et prenom" name="name" value="{{$user->name}}">
                                 </div>
                             </div>
                         </div>
                         
                          <div class="col-md-4">
-                            <b>Nom de l'enfant</b>
+                            <b>Nom utilisateur</b>
                             <div class="input-group">
                                 
                                 <div class="form-line">
-                                    <input type="text" class="form-control datetime" placeholder="email" name="email" value="{{$user->email}}">
+                                    <input type="text" class="form-control datetime" placeholder="speudo" name="username" value="{{$user->username}}">
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-4">
-                            <b>date de la naisssance</b>
+                            <b>email</b>
                             <div class="input-group">
                                
                                 <div class="form-line">
-                                    <input type="date" class="form-control mobile-phone-number" placeholder="date de la naissance" name="born_date" value="{{$user->pasword}}">
+                                    <input type="email" class="form-control mobile-phone-number" placeholder="email" name="email" value="{{$user->email}}">
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <b>phone</b>
+                            <div class="input-group">
+                               
+                                <div class="form-line">
+                                    <input type="number" class="form-control mobile-phone-number" placeholder="phone" name="phone" value="{{$user->phone}}">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <b>password</b>
+                            <div class="input-group">
+                               
+                                <div class="form-line">
+                                    <input type="text" class="form-control mobile-phone-number" placeholder="password" name="password" value="{{$user->password}}">
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-4">
+                            <b>Civility</b>
+
+                            
+                                    <select name="civility" id="pet-select" class="">
+                                    <option value="Homme">Homme</option>
+                                    <option value="Homme">Femme</option>
+                                
+                                </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <b>Admin</b>
+
+                            
+                                    <select name="is_admin" id="pet-select" class="">
+                                    <option value="1">oui</option>
+                                    <option value="0">non</option>
+                                
+                                </select>
                         </div>
                         <div class="col-md-4">
                             <b>image</b>
@@ -525,7 +568,7 @@
                                     <i class="material-icons">perm_media</i>
                                 </span>
                                 <div class="form-line">
-                                    <input type="file" class="form-control mobile-phone-number"  name="image" value="{{$user->image}}" >
+                                    <input type="file" class="form-control mobile-phone-number"  name="image" >
                                 </div>
                             </div>
                         </div>

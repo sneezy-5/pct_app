@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Home;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Actulity;
+use App\Models\Ded;
 use App\Models\User;
+use App\Models\Actulity;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DedController extends Controller
 {
@@ -16,7 +17,8 @@ class DedController extends Controller
      */
     public function index()
     {
-        $deds = Actulity::where('type','deces')->get();
+       // $deds = Actulity::where('type','deces')->get();
+       $deds = Ded::orderBy('id', 'DESC')->get();
         $users  =  User::where('id','!=',auth()->user()->id)->get();
         return view('home.deds.deds',['deds'=>$deds, 'users'=>$users]);
     }

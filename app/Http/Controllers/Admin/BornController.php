@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Born;
 use App\Models\Actulity;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BornController extends Controller
 {
@@ -15,7 +16,8 @@ class BornController extends Controller
      */
     public function index()
     {
-        $borns = Actulity::where('type','naissance')->get();
+        //$borns = Actulity::where('type','naissance')->get();
+        $borns = Born::orderBy('id', 'DESC')->get();
         return view('admin.borns.borns',['borns'=>$borns]);
     }
 
@@ -71,13 +73,16 @@ class BornController extends Controller
             }
 
 
-        $data['title']= "nouvelle naissance";
-        $data['user_id']= auth()->user()->id;
-        $data['user_name']= auth()->user()->name;
-        $data['type']='naissance';
+        $dataActuality['title']= "nouvelle naissance enregisté";
+        $dataActuality['user_id']= auth()->user()->id;
+        $dataActuality['user_name']= auth()->user()->name;
+        $dataActuality['type']='naissance';
          //dd($fileNameToStore);
 
-        Actulity::create($data);
+      $actualty=  Actulity::create($dataActuality);
+      $data['actuality_id']=$actualty->id;
+      Born::create($data);
+
 
        return redirect()->route('admin.born.index');
     }
@@ -89,7 +94,7 @@ class BornController extends Controller
      */
     public function show($id)
     {
-        $born = Actulity::find($id);
+        $born = Born::find($id);
         return view('admin.borns.show_born',['born'=>$born]);
     }
 
@@ -102,7 +107,7 @@ class BornController extends Controller
      */
     public function edit($id)
     {
-        $born = Actulity::find($id);
+        $born = Born::find($id);
         return view('admin.borns.edit_born',['born'=>$born]);
     }
 
@@ -145,16 +150,14 @@ class BornController extends Controller
         else {
             $fileNameToStore = 'noimage.jpg';
              $path = 'noimage.jpg';
-            // $data['image']=$fileNameToStore;
+            $data['image']=Born::find($id)->image;
             }
 
 
        
-        $data['user_id']= auth()->user()->id;
-        $data['user_name']= auth()->user()->name;
          //dd($data);
 
-        Actulity::find($id)->update($data);
+        Born::find($id)->update($data);
 
        return redirect()->route('admin.born.index');
     }
@@ -167,7 +170,7 @@ class BornController extends Controller
      */
     public function destroy($id)
     {
-        Actulity::find($id)->delete();
+        Born::find($id)->delete();
 
        return redirect()->route('admin.born.index');
     }

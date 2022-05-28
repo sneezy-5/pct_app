@@ -6,15 +6,16 @@ use App\Http\Controllers\Home\JobController;
 use App\Http\Controllers\Home\BornController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\MaryController;
+use App\Http\Controllers\Home\UserController;
 use App\Http\Controllers\Home\EventController;
 use App\Http\Controllers\Home\SchoolController;
+use App\Http\Controllers\Home\CommentController;
+use App\Http\Controllers\Home\MessageController;
 use App\Http\Controllers\Home\ProjectController;
 use App\Http\Controllers\Home\SubjectController;
 use App\Http\Controllers\Home\PharmacyController;
 use App\Http\Controllers\Home\ActualityController;
-use App\Http\Controllers\Home\CommentController;
 use App\Http\Controllers\Home\EmergencyController;
-use App\Http\Controllers\Home\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +47,8 @@ Route::group(['middleware' => ['auth','banned']], function () {
     Route::resource('ded', DedController::class);
     Route::resource('subject', SubjectController::class);
     Route::resource('message', MessageController::class);
-
+   
+    
     Route::get('/pharmacie_de_garde', [PharmacyController::class, 'pharDegarde'])->name('pharmacy.degarde');
 
     //ajax request 
@@ -58,9 +60,12 @@ Route::group(['middleware' => ['auth','banned']], function () {
     Route::post('/ajax/message', [MessageController::class, 'create_or_return_private_chat'])->name('massage.chat');
 
     Route::post('/comment_store/{actuality}', [CommentController::class, 'store_comment'])->name('comment.store_comment');
+
+    Route::get('/emerency/{emergency}', [EmergencyController::class, 'show_sick'])->name('emergency.show_sick');
+    Route::get('/info_village', [ActualityController::class, 'info_village'])->name('actuality.info');
 });
 
-
+Route::resource('user', UserController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

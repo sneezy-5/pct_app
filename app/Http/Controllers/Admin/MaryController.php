@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Actulity;
+use App\Models\Mariage;
 
 class MaryController extends Controller
 {
@@ -15,7 +16,7 @@ class MaryController extends Controller
      */
     public function index()
     {
-        $maries = Actulity::where('type','mariage')->get();
+        $maries = Mariage::orderBy('id', 'DESC')->get();
         return view('admin.maries.maries',['maries'=>$maries]);
     }
 
@@ -71,13 +72,15 @@ class MaryController extends Controller
             //dd($path);
             }
 
-        $data['title']= "nouveaux mariage";
-        $data['user_id']= auth()->user()->id;
-        $data['user_name']= auth()->user()->name;
-        $data['type']='mariage';
-         //dd($fileNameToStore);
+            $dataActuality['title']= "Nouveau décès enregisté";
+            $dataActuality['user_id']= auth()->user()->id;
+            $dataActuality['user_name']= auth()->user()->name;
+            $dataActuality['type']='naissance';
 
-        Actulity::create($data);
+          $actualty=  Actulity::create($dataActuality);
+          $data['actuality_id']=$actualty->id;
+
+        Mariage::create($data);
 
        return redirect()->route('admin.mary.index');
     }
@@ -90,7 +93,7 @@ class MaryController extends Controller
      */
     public function show($id)
     {
-         $mary = Actulity::find($id);
+         $mary = Mariage::find($id);
         return view('admin.maries.show_mary',['mary'=>$mary]);
     }
 
@@ -102,7 +105,7 @@ class MaryController extends Controller
      */
     public function edit($id)
     {
-         $mary = Actulity::find($id);
+         $mary = Mariage::find($id);
         return view('admin.maries.edit_mary',['mary'=>$mary]);
     }
 
@@ -142,16 +145,13 @@ class MaryController extends Controller
         else {
             $fileNameToStore = 'noimage.jpg';
              $path = 'noimage.jpg';
-            // $data['image']=$fileNameToStore;
+             $data['image']=Mariage::find($id)->image;
             }
 
 
        
-        $data['user_id']= auth()->user()->id;
-        $data['user_name']= auth()->user()->name;
-         //dd($data);
 
-        Actulity::find($id)->update($data);
+        Mariage::find($id)->update($data);
 
        return redirect()->route('admin.mary.index');
     }
@@ -164,7 +164,7 @@ class MaryController extends Controller
      */
     public function destroy($id)
     {
-         Actulity::find($id)->delete();
+         Mariage::find($id)->delete();
 
        return redirect()->route('admin.mary.index');
     }

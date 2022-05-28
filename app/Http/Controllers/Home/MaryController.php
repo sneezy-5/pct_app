@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Actulity;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Mariage;
 
 class MaryController extends Controller
 {
@@ -16,7 +17,8 @@ class MaryController extends Controller
      */
     public function index()
     {
-        $maries = Actulity::where('type','mariage')->get();
+       // $maries = Actulity::where('type','mariage')->get();
+        $maries = Mariage::orderBy('id', 'DESC')->get();
         $users  =  User::where('id','!=',auth()->user()->id)->get();
         
         return view('home.maries.maries',['maries'=>$maries, 'users'=>$users]);

@@ -206,24 +206,29 @@
                     
                 </div>
                 <!-- #User Info -->
-            <!-- User Info -->
-            <div class="user-info">
+               <!-- User Info -->
+               <div class="user-info">
                 <div class="image">
-                    <img src="images/user-img.png" width="48" height="48" alt="User" />
+                    <img src="{{asset('/images/user-img.png')}}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>David Sibahi</b> </div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>{{auth()->user()->name}}</b> </div>
                     <div class="email">Administrateur</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
                             <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Reglage</a></li>
+                 
                             <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li>
+                            <form action="{{route('logout')}}" method="post">
+													@csrf
+												<button type="submit" title="" style=" color:brown; background-color: blanchedalmond;"><i class="material-icons">input</i>Deconnexion</button>
+												</form>
+ 
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -579,13 +584,13 @@
                     
                 </div>
                 <!-- #User Info -->
-            <!-- User Info -->
-            <div class="user-info">
+                   <!-- User Info -->
+                   <div class="user-info">
                 <div class="image">
-                    <img src="images/user-img.png" width="48" height="48" alt="User" />
+                    <img src="{{asset('/images/user-img.png')}}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>David Sibahi</b> </div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>{{auth()->user()->name}}</b> </div>
                     <div class="email">Administrateur</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
@@ -625,13 +630,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{{route('admin.mary.create')}}" >
+                                <a href="{{route('admin.user.create')}}" >
                                     <span>Ajouter</span>
                                 </a>
                                
                             </li>
                             <li>
-                                <a href="{{route('admin.mary.index')}}" >
+                                <a href="{{route('admin.user.index')}}" >
                                     <span>Gestion des membres</span>
                                 </a>
                                 
@@ -645,17 +650,16 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{{route('admin.mary.create')}}">Ajouter</a>
+                                <a href="{{route('admin.user.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.mary.index')}}">Gestion des utilisateurs</a>
+                                <a href="{{route('admin.user.index')}}">Gestion des utilisateurs</a>
                             </li>
                    
                         
                           
                         </ul>
                     </li>
-                   
                              <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">swap_calls</i>
@@ -769,13 +773,13 @@
                         <ul class="ml-menu">
                             <li>
                                 <a href="{{route('admin.event.create')}}">Ajouter un evenement</a>
-                            </li>
+                            </li> 
                             <li>
                                 <a href="{{route('admin.event.index')}}">Liste des evenements</a>
                             </li>
                             
                         </ul>
-                    </li>
+                    </li> 
 
                      <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -802,7 +806,7 @@
                     
             
                             <li>
-                                <a href="{{route('admin.message.create')}}">Toutes les message</a>
+                                <a href="{{route('admin.message.index')}}">Toutes les message</a>
                             </li>
                         </ul>
                     </li>
@@ -831,9 +835,6 @@
                                 <a href="{{route('admin.actuality.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.actuality.create')}}">Theme</a>
-                            </li>
-                            <li>
                                 <a href="{{route('admin.actuality.index')}}">Toutes les actualités</a>
                             </li>
                         </ul>
@@ -854,9 +855,6 @@
                             </li>
                         </ul>
                     </li>
-                  
-                    
-                  
                   
                     
                     
@@ -932,10 +930,10 @@
                                     <p>pas encore de pharmacie</p>
                                 @else
                                     <thead>
-                                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 173px;">Nom</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 284px;">localisation</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 63px;">Image</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 122px;">Action</th></tr>
+                                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 173px;">Nom</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 284px;">localisation</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 63px;">Image</th><th rowspan="1" colspan="1">De garde</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 122px;">Action</th></tr>
                                     </thead>
                                     <tfoot>
-                                        <tr><th rowspan="1" colspan="1">Nom</th><th rowspan="1" colspan="1">localisation</th><th rowspan="1" colspan="1">Image</th><th rowspan="1" colspan="1">Action</th>
+                                        <tr><th rowspan="1" colspan="1">Nom</th><th rowspan="1" colspan="1">localisation</th><th rowspan="1" colspan="1">Image</th><th rowspan="1" colspan="1">De garde</th><th rowspan="1" colspan="1">Action</th>
                                     </tfoot>
                                     <tbody>                                            
                                         <tr role="row" class="odd">
@@ -943,7 +941,7 @@
                                             <td class="sorting_1">{{$pharmacy->name}}</td>
                                             <td>{{$pharmacy->describe}}</td>
                                             <td>{{$pharmacy->image}}</td>
-                      
+                                            <td> @if($pharmacy->is_active==1) de garde @else pas de garde @endif </td>
                                               <td> <a class="btn btn-secondary" href="{{route('admin.pharmacy.edit',['pharmacy'=>$pharmacy->id])}}">Editer</a></td>
                                                 <!-- <td> <a class="btn btn-primary" href="{{route('admin.pharmacy.show',['pharmacy'=>$pharmacy->id])}}">Afficher</a></td> -->
                                                 <td>   <form  action="{{ route('admin.pharmacy.destroy', ['pharmacy'=>$pharmacy->id])}}" method="post"> 

@@ -1,118 +1,136 @@
 <!DOCTYPE html>
-<html>
-
-
-<!-- Mirrored from gurayyarar.github.io/AdminBSBMaterialDesign/pages/examples/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 May 2021 10:35:33 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sign In | Bootstrap Based Admin Template - Material Design</title>
-    <!-- Favicon-->
-    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
-    <!-- Bootstrap Core Css -->
-    <link href="{{asset('plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
-
-    <!-- Waves Effect Css -->
-    <link href="{{asset('plugins/node-waves/waves.css')}}" rel="stylesheet" />
-
-    <!-- Animation Css -->
-    <link href="{{asset('plugins/animate-css/animate.css')}}" rel="stylesheet" />
-
-    <!-- Custom Css -->
-    <link href="{{asset('css/style2.css')}}" rel="stylesheet">
-</head>
-
-<body class="login-page bg-green">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+	<title>Allakro-App</title>
+    <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16"> 
     
-    <div class="login-box">
-        <div class="logo">
-            <a href="javascript:void(0);">App <b>Allakro</b></a>
-            <small>Accedez à votre application</small>
-        </div>
-        
-        <div class="card">
-            @if($errors)
-                {{$errors}}
-            @endif
+    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/color.css">
+    <link rel="stylesheet" href="css/responsive.css">
 
-            @if (session('error'))
+</head>
+<body>
+<!--<div class="se-pre-con"></div>-->
+<div class="theme-layout">
+	<div class="container-fluid pdng0">
+		<div class="row merged">
+			<!--div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<div class="land-featurearea">
+					<div class="land-meta">
+						<h1>Winku</h1>
+						<p>
+							Winku is free to use for as long as you want with two active projects.
+						</p>
+						<div class="friend-logo">
+							<span><img src="images/wink.png" alt=""></span>
+						</div>
+						<a href="#" title="" class="folow-me">Follow Us on</a>
+					</div>	
+				</div>
+			</div-->
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="login-reg-bg">
+					<div class="log-reg-area sign">
+						<img src="images/logo.png"/>
+						<h2 class="log-title">Connexion</h2>
+                            @if($errors)
+                            {{$errors}}
+                            @endif
+
+                            @if (session('error'))
      <div class="alert alert-danger">
          {{ session('error') }}
      </div>
   @endif
-            <div class="body">
-                <form id="sign_in" method="post" action="{{route('admin.adminlogin')}}">
-                    @csrf
-                    <!-- LOGO -->
-                    <div class="logo-login">
-                        <div class="image">          
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">person</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="email" class="form-control" name="email" placeholder="Login" required autofocus>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">lock</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-8 p-t-5">
-                            <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
-                            <label for="rememberme">Rester connecté</label>
-                        </div>
-                        <div class="col-xs-4">
-                            <button class="btn btn-block bg-orange waves-effect" type="submit">Connexion</button>
-                        </div>
-                    </div>
-                    <div class="row m-t-15 m-b--20">
-                       
-                        <div class="col-xs-6 align-right">
-                        @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}" class="txt1">
-                                
-                                 {{ __('Mot de passe oublié ?') }}
-                            </a>
-                             @endif
-                          
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+							<p>
+								Vous n'utilisez pas encore "Allakro"? <a href="{{route('user.create')}}" title="">Rejoignez nous</a>
+							</p>
+						<form method="post" action="{{route('admin.adminlogin')}}">
+                            @csrf
+							<div class="form-group">	
+							  <input type="email" id="input" required="required" name="email"/>
+							  <label class="control-label" for="input">Login</label><i class="mtrl-select"></i>
+							</div>
+							<div class="form-group">	
+							  <input type="password" required="required" name="password" />
+							  <label class="control-label" for="input">Mot de passe</label><i class="mtrl-select"></i>
+							</div>
+							<div class="checkbox">
+							  <label>
+								<input type="checkbox" checked="checked"/><i class="check-box"></i>Se souvenir.
+							  </label>
+							</div>
+							<a href="{{ route('password.request') }}" title="" class="forgot-pwd">Mot de passe oublié ?</a>
+							<div class="submit-btns">
+								<button class="mtr-btn signin" type="submit"><span>Se connecter</span></button>
+								<a href="{{route('user.create')}}" class="mtr-btn signup" type="button"><span>Enregistrez vous</span></a>
+							</div>
+						</form>
+					</div>
+					<!-- <div class="log-reg-area reg">
+						<h2 class="log-title">Register</h2>
+							<p>
+								Vous N'utilisez pas encore Allakro? <a href="#" title="">Faite un tour</a> Ou <a href="#" title="">Rejoingez Maintenant</a>
+							</p>
+						<form method="post" action="{{route('user.store')}}" >
+                        @csrf
+							<div class="form-group">	
+							  <input type="text" required="required" name="name"/>
+							  <label class="control-label" for="input">Nom & Prenom</label><i class="mtrl-select"></i>
+							</div>
+							<div class="form-group">	
+							  <input type="text" required="required" name="username"/>
+							  <label class="control-label" for="input">Pseudo</label><i class="mtrl-select"></i>
+							</div>
+                            <div class="form-group">	
+							  <input type="number" required="required" name="phone"/>
+							  <label class="control-label" for="input">Phone</label><i class="mtrl-select"></i>
+							</div>
+							<div class="form-group">	
+							  <input type="password" required="required" name="password"/>
+							  <label class="control-label" for="input">Mot de Passe</label><i class="mtrl-select"></i>
+							</div>
+							<div class="form-radio">
+							  <div class="radio">
+								<label>
+								  <input type="radio" name="civility" checked="checked"/><i class="check-box"></i>Homme
+								</label>
+							  </div>
+							  <div class="radio">
+								<label>
+								  <input type="radio" name="civility"/><i class="check-box"></i>Femme
+								</label>
+							  </div>
+							</div>
+							<div class="form-group">	
+							  <input type="text" required="required"/>
+							  <label class="control-label" for="input"><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6c29010d05002c">[email&#160;protected]</a></label><i class="mtrl-select"></i>
+							</div>
+							<div class="checkbox">
+							  <label>
+								<input type="checkbox" checked="checked"/><i class="check-box"></i>Accept Terms & Conditions ?
+							  </label>
+							</div>
+							<a href="#" title="" class="already-have">Déjà un compte</a>
+							<div class="submit-btns">
+								<button class="mtr-btn signup" type="submit"><span>Enregister</span></button>
+							</div>
+						</form>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+	<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.min.js"></script>
+	<script src="js/script.js"></script>
 
-    <!-- Jquery Core Js -->
-    <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+</body>	
 
-    <!-- Bootstrap Core Js -->
-    <script src="{{asset('plugins/bootstrap/js/bootstrap.js')}}"></script>
-
-    <!-- Waves Effect Plugin Js -->
-    <script src="{{asset('plugins/node-waves/waves.js')}}"></script>
-
-    <!-- Validation Plugin Js -->
-    <script src="{{asset('plugins/jquery-validation/jquery.validate.js')}}"></script>
-
-    <!-- Custom Js -->
-    <script src="{{asset('js/admin.js')}}"></script>
-    <script src="{{asset('js/pages/examples/sign-in.js')}}"></script>
-</body>
-
-
-<!-- Mirrored from gurayyarar.github.io/AdminBSBMaterialDesign/pages/examples/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 May 2021 10:35:33 GMT -->
 </html>

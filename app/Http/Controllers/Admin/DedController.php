@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Actulity;
+use App\Models\Ded;
 
 class DedController extends Controller
 {
@@ -15,7 +16,7 @@ class DedController extends Controller
      */
     public function index()
     {
-        $deds = Actulity::where('type','deces')->get();
+        $deds = Ded::orderBy('id', 'DESC')->get();
         return view('admin.deds.deds',['deds'=>$deds]);
     }
 
@@ -72,13 +73,17 @@ class DedController extends Controller
             //dd($path);
             }
 
-        $data['title']= "nouveaux décès";
-        $data['user_id']= auth()->user()->id;
-        $data['user_name']= auth()->user()->name;
-        $data['type']='deces';
+    
+            $dataActuality['title']= "Nouveau décès enregisté";
+            $dataActuality['user_id']= auth()->user()->id;
+            $dataActuality['user_name']= auth()->user()->name;
+            $dataActuality['type']='naissance';
+
+          $actualty=  Actulity::create($dataActuality);
+          $data['actuality_id']=$actualty->id;
          //dd($fileNameToStore);
 
-        Actulity::create($data);
+        Ded::create($data);
 
        return redirect()->route('admin.ded.index');
     }
@@ -91,7 +96,7 @@ class DedController extends Controller
      */
     public function show($id)
     {
-         $ded = Actulity::find($id);
+         $ded = Ded::find($id);
         return view('admin.deds.show_ded',['ded'=>$ded]);
     }
 
@@ -103,7 +108,7 @@ class DedController extends Controller
      */
     public function edit($id)
     {
-        $ded = Actulity::find($id);
+        $ded = Ded::find($id);
         return view('admin.deds.edit_ded',['ded'=>$ded]);
     }
 
@@ -145,16 +150,11 @@ class DedController extends Controller
         else {
             $fileNameToStore = 'noimage.jpg';
              $path = 'noimage.jpg';
-            // $data['image']=$fileNameToStore;
+             $data['image']=Ded::find($id)->image;
             }
 
 
-       
-        $data['user_id']= auth()->user()->id;
-        $data['user_name']= auth()->user()->name;
-         //dd($data);
-
-        Actulity::find($id)->update($data);
+        Ded::find($id)->update($data);
 
        return redirect()->route('admin.ded.index');
     }
@@ -167,7 +167,7 @@ class DedController extends Controller
      */
     public function destroy($id)
     {
-        Actulity::find($id)->delete();
+        Ded::find($id)->delete();
 
        return redirect()->route('admin.ded.index');
     }

@@ -76,14 +76,14 @@ class ActualityController extends Controller
             //dd($path);
             }
 
-           
+        $data['type']='info_village';
         $data['user_id']= auth()->user()->id;
         $data['user_name']= auth()->user()->name;
          //dd($fileNameToStore);
 
          $actuality = Actulity::create($data);
          $users = User::all();
-         //auth()->user()->notify(new SendNotification($subejct));
+        
          foreach($users as $user){
              $user->notify(new ActualityNotiication($actuality));
          }

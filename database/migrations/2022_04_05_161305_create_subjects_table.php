@@ -17,7 +17,8 @@ class CreateSubjectsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('describe');
-            $table->integer('voted')->default(0)->nullable();
+            $table->boolean('voted')->default(0)->nullable();
+            $table->boolean('is_valided')->default(0)->nullable();
             $table->timestamps();
 
             $table->foreignId('user_id')

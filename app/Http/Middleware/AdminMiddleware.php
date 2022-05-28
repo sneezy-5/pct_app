@@ -18,6 +18,8 @@ class AdminMiddleware
     {
         if (auth()->user()->is_admin===1) return $next($request);
 
-        abort(403);
+        //abort(403);
+        return redirect()->route('login')->with('error', 'Vous n\'est pas autorisé à aller sur cette page');
+
     }
 }

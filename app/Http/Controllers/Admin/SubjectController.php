@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Subject;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Notifications\ValidateSubject;
 
 
 class SubjectController extends Controller
@@ -16,7 +18,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $subjects = Subject::all();
+        $subjects = Subject::orderBy('id', 'DESC')->where('is_valided',0)->get();
         return view('admin.subjects.subjects',['subjects'=>$subjects]);
     }
 
@@ -120,6 +122,20 @@ class SubjectController extends Controller
     {
         Subject::find($id)->delete();
 
+
        return redirect()->route('admin.subject.index');
+    }
+
+    public function approuved($id)
+    {
+       $subejct= Subject::find($id);
+       $users = User::all();
+       $subejct->is_valided = 1;
+       $subejct->save();
+       //Actulity::create(['title'=>''])
+       foreach($users as $user){
+        $user->notify(new ValidateSubject($subejct));
+    }
+        return redirect()->route('admin.subject.index');
     }
 }

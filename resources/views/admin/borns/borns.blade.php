@@ -206,24 +206,29 @@
                     
                 </div>
                 <!-- #User Info -->
-            <!-- User Info -->
-            <div class="user-info">
+                <!-- User Info -->
+                <div class="user-info">
                 <div class="image">
-                    <img src="images/user-img.png" width="48" height="48" alt="User" />
+                    <img src="{{asset('/images/user-img.png')}}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>David Sibahi</b> </div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>{{auth()->user()->name}}</b> </div>
                     <div class="email">Administrateur</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
                             <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Reglage</a></li>
+                 
                             <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li>
+                            <form action="{{route('logout')}}" method="post">
+													@csrf
+												<button type="submit" title="" style=" color:brown; background-color: blanchedalmond;"><i class="material-icons">input</i>Deconnexion</button>
+												</form>
+ 
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -579,13 +584,13 @@
                     
                 </div>
                 <!-- #User Info -->
-            <!-- User Info -->
-            <div class="user-info">
+                 <!-- User Info -->
+                 <div class="user-info">
                 <div class="image">
-                    <img src="images/user-img.png" width="48" height="48" alt="User" />
+                    <img src="{{asset('/images/user-img.png')}}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>David Sibahi</b> </div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>{{auth()->user()->name}}</b> </div>
                     <div class="email">Administrateur</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
@@ -612,7 +617,7 @@
                 <ul class="list">
                     <li class="header">MENU PRINCIPAL</li>
                     <li class="active">
-                        <a href="#">
+                        <a href="/admin/dashboard">
                             <i class="material-icons">home</i>
                             <span>Accueil</span>
                         </a>
@@ -625,13 +630,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="ajouter-membre.html" >
+                                <a href="{{route('admin.user.create')}}" >
                                     <span>Ajouter</span>
                                 </a>
                                
                             </li>
                             <li>
-                                <a href="liste-membre.html" >
+                                <a href="{{route('admin.user.index')}}" >
                                     <span>Gestion des membres</span>
                                 </a>
                                 
@@ -645,17 +650,16 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="ajouter-user.html">Ajouter</a>
+                                <a href="{{route('admin.user.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="#">Gestion des utilisateurs</a>
+                                <a href="{{route('admin.user.index')}}">Gestion des utilisateurs</a>
                             </li>
                    
                         
                           
                         </ul>
                     </li>
-                   
                              <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">swap_calls</i>
@@ -684,7 +688,7 @@
                                 <a href="{{route('admin.job.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.job.create')}}">Liste des Professions</a>
+                                <a href="{{route('admin.job.index')}}">Liste des Professions</a>
                             </li>
                    
                         
@@ -702,7 +706,7 @@
                                 <a href="{{route('admin.project.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.project.create')}}">Liste de projets marie</a>
+                                <a href="{{route('admin.project.index')}}">Liste de projets marie</a>
                             </li>
                    
                         
@@ -736,7 +740,7 @@
                                 <a href="{{route('admin.pharmacy.create')}}">Ajouter une pharmacie</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.pharmacy.index')}}">Pharmacie de garde</a>
+                                <a href="{{route('admin.pharmacy.degarde')}}">Pharmacie de garde</a>
                             </li>
                             <li>
                                 <a href="{{route('admin.pharmacy.index')}}">Liste des pharmacies</a>
@@ -769,13 +773,13 @@
                         <ul class="ml-menu">
                             <li>
                                 <a href="{{route('admin.event.create')}}">Ajouter un evenement</a>
-                            </li>
+                            </li> 
                             <li>
                                 <a href="{{route('admin.event.index')}}">Liste des evenements</a>
                             </li>
                             
                         </ul>
-                    </li>
+                    </li> 
 
                      <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -802,7 +806,7 @@
                     
             
                             <li>
-                                <a href="{{route('admin.message.create')}}">Toutes les message</a>
+                                <a href="{{route('admin.message.index')}}">Toutes les message</a>
                             </li>
                         </ul>
                     </li>
@@ -817,7 +821,7 @@
                                 <a href="{{route('admin.subject.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.subject.create')}}">Liste de subjections</a>
+                                <a href="{{route('admin.subject.index')}}">Liste de subjections</a>
                             </li>
                         </ul>
                     </li>
@@ -831,10 +835,7 @@
                                 <a href="{{route('admin.actuality.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.actuality.create')}}">Theme</a>
-                            </li>
-                            <li>
-                                <a href="{{route('admin.actuality.create')}}">Toutes les actualités</a>
+                                <a href="{{route('admin.actuality.index')}}">Toutes les actualités</a>
                             </li>
                         </ul>
                     </li>
@@ -854,9 +855,6 @@
                             </li>
                         </ul>
                     </li>
-                  
-                    
-                  
                   
                     
                     

@@ -162,13 +162,13 @@
                     
                 </div>
                 <!-- #User Info -->
-            <!-- User Info -->
-            <div class="user-info">
+                <!-- User Info -->
+                <div class="user-info">
                 <div class="image">
-                    <img src="../../images/user-img.png" width="48" height="48" alt="User" />
+                    <img src="{{asset('/images/user-img.png')}}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>David Sibahi</b> </div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>{{auth()->user()->name}}</b> </div>
                     <div class="email">Administrateur</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
@@ -208,13 +208,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="javascript:void(0);" >
+                                <a href="{{route('admin.user.create')}}" >
                                     <span>Ajouter</span>
                                 </a>
                                
                             </li>
                             <li>
-                                <a href="javascript:void(0);" >
+                                <a href="{{route('admin.user.index')}}" >
                                     <span>Gestion des membres</span>
                                 </a>
                                 
@@ -237,7 +237,6 @@
                         
                           
                         </ul>
-                    </li>
                     </li>
                              <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -352,13 +351,13 @@
                         <ul class="ml-menu">
                             <li>
                                 <a href="{{route('admin.event.create')}}">Ajouter un evenement</a>
-                            </li>
+                            </li> 
                             <li>
                                 <a href="{{route('admin.event.index')}}">Liste des evenements</a>
                             </li>
                             
                         </ul>
-                    </li>
+                    </li> 
 
                      <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -385,7 +384,7 @@
                     
             
                             <li>
-                                <a href="{{route('admin.message.create')}}">Toutes les message</a>
+                                <a href="{{route('admin.message.index')}}">Toutes les message</a>
                             </li>
                         </ul>
                     </li>
@@ -414,9 +413,6 @@
                                 <a href="{{route('admin.actuality.create')}}">Ajouter</a>
                             </li>
                             <li>
-                                <a href="{{route('admin.actuality.create')}}">Theme</a>
-                            </li>
-                            <li>
                                 <a href="{{route('admin.actuality.index')}}">Toutes les actualités</a>
                             </li>
                         </ul>
@@ -433,11 +429,10 @@
                             </li>
                       
                             <li>
-                                <a href="{{route('admin.ded.create')}}">Liste des décès</a>
+                                <a href="{{route('admin.ded.index')}}">Liste des décès</a>
                             </li>
                         </ul>
                     </li>
-                  
                   
                     
                     

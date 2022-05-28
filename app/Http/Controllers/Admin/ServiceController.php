@@ -54,7 +54,7 @@ class ServiceController extends Controller
 
 
         $data = $request->except('_token','service_id'); 
-           
+          //dd($data); 
         $service = Service::create($data);
 
          Emergency::find($request['service_id'])->services()->attach([$service->id]);

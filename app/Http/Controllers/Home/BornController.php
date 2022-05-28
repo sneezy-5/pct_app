@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\Born;
 use App\Models\User;
 use App\Models\Actulity;
 use Illuminate\Http\Request;
@@ -16,7 +17,8 @@ class BornController extends Controller
      */
     public function index()
     {
-        $borns = Actulity::where('type','naissance')->get();
+        //$borns = Actulity::where('type','naissance')->get();
+        $borns = Born::orderBy('id', 'DESC')->get();
         $users  =  User::where('id','!=',auth()->user()->id)->get();
 
         return view('home.borns.borns',['borns'=>$borns, 'users'=>$users]);

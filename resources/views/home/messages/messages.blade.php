@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/color.css')}}">
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+	<link rel="stylesheet" href="{{asset('fontawesome-free-5.14.0-web/css/all.min.css')}}">
 
 </head>
 <body>
@@ -217,7 +218,7 @@
 		</div>
 		
 		<div class="top-area">
-		<ul class="main-menu">
+			<ul class="main-menu">
 				<li>
 					<a href="#" title="">Accueil</a>
 					<ul>
@@ -240,17 +241,18 @@
 				<li>
 					<a href="#" title="">Actualité</a>
 					<ul>
-						<li><a href="#" title="">Information du village</a></li>
+						<li><a href="{{route('actuality.info')}}" title="">Information du village</a></li>
 						<li><a href="{{route('born.index')}}" title="">Naissance</a></li>
 						<li><a href="{{route('ded.index')}}" title="">Décès</a></li>
 						<li><a href="{{route('mary.index')}}" title="">Mariage</a></li>
 					</ul>
 				</li>
 				<li>
+				<img src="/images/2019-05-21.png" alt="uvci_image" height="40" width="40">
 					<a href="#" title="">UVCI</a>
 					<ul>
-						<li><a href="#" title="">Presentation</a></li>
-						<li><a href="{{route('project.index')}}" title="">Activité</a></li>
+						<li><a href="https://uvci.edu.ci/portail/Main/index/fr" title="">Presentation</a></li>
+						<li><a href="http://campus.uvci.edu.ci/" title="">Activité</a></li>
 						<li><a href="#" title="">contact</a></li>
 						<li><a href="http://scolarite.uvci.edu.ci/" title="">Site web UVCI</a></li>
 						
@@ -296,9 +298,9 @@
 				</li>
 				<li>
 					<a href="#" title="Messages" data-ripple=""><i class="ti-comment"></i><span></span></a>
-					<div class="dropdowns">
-						<!-- <span>5 New Messages</span> -->
-						<!-- <ul class="drops-menu">
+					<!-- <div class="dropdowns">
+						<span>5 New Messages</span>
+						<ul class="drops-menu">
 							<li>
 								<a href="notifications.html" title="">
 									<img src="images/resources/thumb-1.jpg" alt="">
@@ -337,7 +339,7 @@
 									<img src="images/resources/thumb-4.jpg" alt="">
 									<div class="mesg-meta">
 										<h6>Tom cruse</h6>
-										<span>Hi, how r u dear ...?</span>
+										<span>Hi, how dear ...?</span>
 										<i>2 min ago</i>
 									</div>
 								</a>
@@ -354,9 +356,9 @@
 								</a>
 								<span class="tag">New</span>
 							</li>
-						</ul> -->
-						<a href="{{route('message.index')}}" title="" class="more-mesg">view more</a>
-					</div>
+						</ul>
+						<a href="messages.html" title="" class="more-mesg">view more</a>
+					</div> -->
 				</li>
 				<li><a href="#" title="Languages" data-ripple=""><i class="fa fa-globe"></i></a>
 					<div class="dropdowns languages">
@@ -368,17 +370,18 @@
 				</li>
 			</ul>
 			<div class="user-img">
-				<img src="images/resources/admin.jpg" alt="">
+				<img src="{{auth()->user()->picture}}" alt="">
 				<span class="status f-online"></span>
 				<div class="user-setting">
-					<a href="#" title=""><span class="status f-online"></span>online</a>
-					<a href="#" title=""><span class="status f-away"></span>away</a>
-					<a href="#" title=""><span class="status f-off"></span>offline</a>
-					<a href="#" title=""><i class="ti-user"></i> view profile</a>
-					<a href="#" title=""><i class="ti-pencil-alt"></i>edit profile</a>
-					<a href="#" title=""><i class="ti-target"></i>activity log</a>
-					<a href="#" title=""><i class="ti-settings"></i>account setting</a>
-					<a href="#" title=""><i class="ti-power-off"></i>log out</a>
+					
+					<a href="{{route('user.dashboard')}}" title=""><i class="ti-user"></i>profile</a>
+					<a href="#" title=""><i class="ti-pencil-alt"></i>modifier profile</a>
+					<a href="#" title=""><i class="ti-settings"></i>mot de passe</a>
+					
+					<form action="{{route('logout')}}" method="post">
+													@csrf
+												<button type="submit" title=""><i class="ti-power-off"></i>Deconnexion</button>
+												</form>
 				</div>
 			</div>
 			<span class="ti-menu main-menu" data-ripple=""></span>
@@ -401,62 +404,62 @@
 											<a href="#" title="Advertisment"><img src="images/resources/ad-widget.jpg" alt=""></a>
 										</figure> -->
 									</div>
-									<div class="widget stick-widget">
-										<h4 class="widget-title">Shortcuts</h4>
+									<div class="widget">
+										<h4 class="widget-title">Racourcis</h4>
 										<ul class="naves">
 											<li>
-												<i class="ti-clipboard"></i>
-												<a href="/" title="">Actualité</a>
+												<i class="fa fa-newspaper-o"></i>
+												<a href="/" title="">Actualités</a>
 											</li>
 											
 											<li>
-												<i class="ti-image"></i>
-												<a href="{{route('pharmacy.index')}}" title="">Pharmacie</a>
+												<i class="fas fa-first-aid"></i>
+												<a href="{{route('pharmacy.index')}}" title="">Pharmacies</a>
 											</li>
 											<li>
-												<i class="ti-video-camera"></i>
-												<a href="{{route('emergency.index')}}" title="">Hopital</a>
+											<i class="fas fa-hospital"></i>
+												<a href="{{route('emergency.index')}}" title="">Hopitaux</a>
 											</li>
 											<li>
-												<i class="ti-video-camera"></i>
-												<a href="{{route('job.index')}}" title="">Profession</a>
+											<i class="fa fa-tasks" aria-hidden="true"></i>
+												<a href="{{route('job.index')}}" title="">Professions</a>
 											</li>
 											<li>
-												<i class="ti-video-camera"></i>
-												<a href="{{route('event.index')}}" title="">Evenemment</a>
+												<i class="fa fa-calendar"></i>
+												<a href="{{route('event.index')}}" title="">Évènements</a>
 											</li>
 											<li>
-												<i class="ti-video-camera"></i>
-												<a href="{{route('project.index')}}" title="">Projet Mairie</a>
+												<i class="fas fa-project-diagram"></i>
+												<a href="{{route('project.index')}}" title="">Projets Mairie</a>
 											</li>
 											<li>
-												<i class="ti-video-camera"></i>
+											<i class="fas fa-school"></i>
 												<a href="{{route('school.index')}}" title="">Ecoles</a>
 											</li>
 										
 											<li>
 												<i class="ti-video-camera"></i>
-												<a href="{{route('subject.index')}}" title="">Subjection</a>
+												<a href="{{route('subject.index')}}" title="">subjections</a>
 											</li>
 											<li>
-												<i class="ti-comments-smiley"></i>
-												<a href="#" title="">Messages</a>
+											<i class="fas fa-comment"></i>
+												<a href="{{route('message.index')}}" title="">Messages</a>
 											</li>
 											<li>
-												<i class="ti-bell"></i>
-												<a href="#" title="">Reglage</a>
+											<i class="fas fa-user"></i>
+												<a href="/profile" title="">Profil</a>
 											</li>
 											
 											
 											<li>
-												<i class="ti-power-off"></i>
+												<!-- <i class="ti-power-off"></i> -->
 												<form action="{{route('logout')}}" method="post">
 													@csrf
 												<button type="submit" title="">Deconnexion</button>
 												</form>
 											</li>
 										</ul>
-									</div><!-- Shortcuts -->										
+									</div><!-- Shortcuts -->									
 								</aside>
 							</div><!-- sidebar -->
 							<div class="col-lg-6">
@@ -469,7 +472,7 @@
 												<li>
 													
 													<figure>
-														<img src="images/resources/friend-avatar2.jpg" alt="">
+														<img src="/images/{{$chatroom['user_pic']}}" alt="">
 														<span class="status f-online"></span>
 													</figure>
 													<div class="people-name">
@@ -536,24 +539,24 @@
 								<a href="index-2.html" title=""><img src="images/logo.png" alt=""></a>
 							</div>	
 							<p>
-								The trio took this simple idea and built it into the world’s leading carpooling platform.
+								L'UVCI et le village d'Allakro collaborent pour un bien-être des populations villageoies. Cette application permet un bon fonctionnement des activites.
 							</p>
 						</div>
 						<ul class="location">
 							<li>
 								<i class="ti-map-alt"></i>
-								<p>33 new montgomery st.750 san francisco, CA USA 94105.</p>
+								<p>Abidjan 2plateaux, Cote d'Ivoire.</p>
 							</li>
 							<li>
 								<i class="ti-mobile"></i>
-								<p>+1-56-346 345</p>
+								<p>+225 07-98-5634-6345</p>
 							</li>
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-2 col-md-4">
+				<div class="col-lg-2 col-md-6">
 					<div class="widget">
-						<div class="widget-title"><h4>follow</h4></div>
+						<div class="widget-title"><h4>Nos comptes</h4></div>
 						<ul class="list-style">
 							<li><i class="fa fa-facebook-square"></i> <a href="https://web.facebook.com/shopcircut/" title="">facebook</a></li>
 							<li><i class="fa fa-twitter-square"></i><a href="https://twitter.com/login?lang=en" title="">twitter</a></li>
@@ -563,21 +566,21 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-2 col-md-4">
+				<div class="col-lg-2 col-md-6">
 					<div class="widget">
-						<div class="widget-title"><h4>Navigate</h4></div>
+						<div class="widget-title"><h4>Navigation</h4></div>
 						<ul class="list-style">
-							<li><a href="about.html" title="">about us</a></li>
-							<li><a href="contact.html" title="">contact us</a></li>
-							<li><a href="terms.html" title="">terms & Conditions</a></li>
-							<li><a href="#" title="">RSS syndication</a></li>
-							<li><a href="sitemap.html" title="">Sitemap</a></li>
+							<li><a href="#" title="">Apropos</a></li>
+							<li><a href="#" title="">Nous contacter</a></li>
+							<li><a href="#" title="">Conditions et termes</a></li>
+							
+							<li><a href="#" title="">Sitemap</a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-2 col-md-4">
+				<div class="col-lg-2 col-md-6">
 					<div class="widget">
-						<div class="widget-title"><h4>useful links</h4></div>
+						<div class="widget-title"><h4>Liens</h4></div>
 						<ul class="list-style">
 							<li><a href="#" title="">leasing</a></li>
 							<li><a href="#" title="">submit route</a></li>
@@ -587,16 +590,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-2 col-md-4">
-					<div class="widget">
-						<div class="widget-title"><h4>download apps</h4></div>
-						<ul class="colla-apps">
-							<li><a href="https://play.google.com/store?hl=en" title=""><i class="fa fa-android"></i>android</a></li>
-							<li><a href="https://www.apple.com/lae/ios/app-store/" title=""><i class="ti-apple"></i>iPhone</a></li>
-							<li><a href="https://www.microsoft.com/store/apps" title=""><i class="fa fa-windows"></i>Windows</a></li>
-						</ul>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</footer><!-- footer -->
