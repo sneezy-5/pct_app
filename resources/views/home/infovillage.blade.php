@@ -10,6 +10,7 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{asset('fontawesome-free-5.14.0-web/css/all.min.css')}}">
 	<title>Allakro</title>
     <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16"> 
     
@@ -165,7 +166,7 @@
 					</ul>
 				</li>
 				<li>
-				<img src="/images/logo-app.png" alt="uvci_image" height="70" width="60">
+				<img src="/images/2019-05-21.png" alt="uvci_image" height="40" width="40">
 					<a href="#" title="">UVCI</a>
 					<ul>
 						<li><a href="#" title="">Presentation</a></li>

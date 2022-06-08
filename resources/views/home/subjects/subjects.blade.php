@@ -426,7 +426,7 @@
 										</div>
 								<div class="central-meta">
 									<div class="groups">
-										<span><i class="fa fa-users"></i> Surgection</span>
+										<span><i class="fa fa-users"></i> Subjections</span>
 									</div>
 									<ul class="nearby-contct">
 										
